@@ -2,3 +2,9 @@
 # Example:
 # requests==2.25.1
 # numpy==1.21.0
+pylint
+flake8
+black
+pandas
+numpy
+matplotlib
