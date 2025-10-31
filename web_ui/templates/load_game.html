@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Load Simulation - Use Case Simulator{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <h1>Load Saved Simulation</h1>
+        <p class="text-center mb-4">Resume your business simulation from a previous save.</p>
+
+        {% if saves %}
+        <form action="{{ url_for('main.load_game') }}" method="post" class="form">
+            <div class="form-group">
+                <label for="save_name" class="form-label">Select Save File</label>
+                <select id="save_name" name="save_name" class="form-input" required>
+                    <option value="">Choose a save file...</option>
+                    {% for save in saves %}
+                    <option value="{{ save.name }}">{{ save.name }} ({{ save.modified }})</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary btn-large">
+                    <span class="btn-icon">📁</span>
+                    Load Simulation
+                </button>
+            </div>
+        </form>
+
+        <div class="mt-4">
+            <h3>Saved Simulations</h3>
+            <div class="grid grid-2 mt-3">
+                {% for save in saves %}
+                <div class="card" style="background: rgba(0, 84, 146, 0.1);">
+                    <h4>{{ save.name }}</h4>
+                    <p class="mb-2">Saved: {{ save.modified }}</p>
+                    <a href="{{ url_for('game.load_specific_game', save_name=save.name) }}"
+                       class="btn btn-secondary btn-small">Load This Simulation</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <div class="text-center">
+            <div style="font-size: 3rem; margin-bottom: var(--spacing-lg);">📁</div>
+            <h3>No Saved Simulations Found</h3>
+            <p>You haven't saved any simulations yet. Start a new simulation to create your first save!</p>
+            <a href="{{ url_for('main.new_game') }}" class="btn btn-primary btn-large mt-4">
+                <span class="btn-icon">🚀</span>
+                Start New Game
+            </a>
+        </div>
+        {% endif %}
+
+        <div class="text-center mt-4">
+            <a href="{{ url_for('main.menu') }}" class="link-primary">Back to Menu</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

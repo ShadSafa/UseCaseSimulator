@@ -1,0 +1,115 @@
+{
+  "title": "Booming Economy",
+  "description": "A period of economic growth with high demand and favorable market conditions. Perfect for aggressive expansion strategies.",
+  "difficulty": "easy",
+  "estimated_duration": 10,
+  "tags": ["economic", "growth", "expansion"],
+  "version": "1.0",
+  "created_at": "2025-01-01T00:00:00",
+
+  "objectives": [
+    "Achieve 25% profit margin",
+    "Capture 20% market share",
+    "Maintain customer satisfaction above 85%"
+  ],
+
+  "challenges": [
+    "High competition intensity",
+    "Rapidly changing market conditions"
+  ],
+
+  "tips": [
+    "Focus on capacity expansion early",
+    "Invest in marketing to build brand value",
+    "Monitor cash flow carefully during growth"
+  ],
+
+  "market_conditions": {
+    "demand_level": 1500.0,
+    "price_index": 1.2,
+    "competition_intensity": 0.7,
+    "economic_indicators": {
+      "gdp_growth": 0.05,
+      "inflation": 0.02,
+      "interest_rate": 0.03
+    },
+    "trend_factors": {
+      "seasonal": 0.1,
+      "trend": 0.03,
+      "cyclical": 0.05
+    }
+  },
+
+  "starting_conditions": {
+    "company": {
+      "id": "player_company",
+      "name": "Your Startup",
+      "financial_data": {
+        "revenue": 50000.0,
+        "costs": 40000.0,
+        "profit": 10000.0,
+        "cash": 25000.0,
+        "assets": 100000.0,
+        "liabilities": 75000.0
+      },
+      "operations_data": {
+        "capacity": 500.0,
+        "efficiency": 0.75,
+        "quality": 0.7,
+        "customer_satisfaction": 0.65,
+        "utilization": 0.0
+      },
+      "resource_data": {
+        "employees": 50,
+        "equipment": 50000.0,
+        "inventory": 25000.0
+      },
+      "market_data": {
+        "market_share": 0.05,
+        "brand_value": 25.0,
+        "competitive_position": 0.4
+      }
+    },
+    "competitors": [
+      {
+        "id": "competitor_1",
+        "name": "TechCorp",
+        "market_share": 0.25,
+        "aggressiveness": 0.6,
+        "financials": {
+          "revenue": 500000.0,
+          "profit": 75000.0
+        }
+      },
+      {
+        "id": "competitor_2",
+        "name": "InnovateLtd",
+        "market_share": 0.2,
+        "aggressiveness": 0.8,
+        "financials": {
+          "revenue": 400000.0,
+          "profit": 60000.0
+        }
+      },
+      {
+        "id": "competitor_3",
+        "name": "GlobalTech",
+        "market_share": 0.15,
+        "aggressiveness": 0.5,
+        "financials": {
+          "revenue": 300000.0,
+          "profit": 45000.0
+        }
+      }
+    ],
+    "round_number": 0
+  },
+
+  "simulation_config": {
+    "max_rounds": 10,
+    "num_competitors": 3,
+    "initial_market_demand": 1500.0,
+    "market_volatility": 0.15,
+    "event_frequency": 0.25
+  }
+}

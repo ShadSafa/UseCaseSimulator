@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}New Game - Use Case Simulator{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <h1>Start New Game</h1>
+        <p class="text-center mb-4">Create your business empire and compete in the market!</p>
+
+        <form action="{{ url_for('main.new_game') }}" method="post" class="form">
+            <div class="form-group">
+                <label for="company_name" class="form-label">Company Name</label>
+                <input type="text" id="company_name" name="company_name"
+                       class="form-input" placeholder="Enter your company name"
+                       value="My Company" required>
+            </div>
+
+            <div class="form-group">
+                <label for="difficulty" class="form-label">Difficulty Level</label>
+                <select id="difficulty" name="difficulty" class="form-input" required>
+                    <option value="easy">Easy - Gentle learning curve</option>
+                    <option value="medium" selected>Medium - Balanced challenge</option>
+                    <option value="hard">Hard - Strategic mastery required</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="scenario" class="form-label">Market Scenario</label>
+                <select id="scenario" name="scenario" class="form-input" required>
+                    <option value="default" selected>Stable Market - Predictable conditions</option>
+                    <option value="booming_economy">Booming Economy - High growth opportunity</option>
+                    <option value="competitive_market">Competitive Market - Intense rivalry</option>
+                    <option value="recession">Economic Recession - Survival challenge</option>
+                </select>
+            </div>
+
+            <div class="scenario-description" id="scenario-description">
+                <div class="card" style="background: rgba(0, 212, 255, 0.1); border-color: var(--cyan-blue);">
+                    <h4>Stable Market</h4>
+                    <p>Predictable market conditions perfect for learning basic business management principles. Start with balanced resources and moderate competition.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary btn-large">
+                    <span class="btn-icon">🚀</span>
+                    Start Simulation
+                </button>
+                <br>
+                <a href="{{ url_for('main.menu') }}" class="link-primary mt-3 d-block">Back to Menu</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+// Update scenario description when selection changes
+document.getElementById('scenario').addEventListener('change', function() {
+    const scenario = this.value;
+    const descriptions = {
+        'default': {
+            title: 'Stable Market',
+            description: 'Predictable market conditions perfect for learning basic business management principles. Start with balanced resources and moderate competition.'
+        },
+        'booming_economy': {
+            title: 'Booming Economy',
+            description: 'High growth environment with increasing demand. Focus on scaling operations and capitalizing on market expansion opportunities.'
+        },
+        'competitive_market': {
+            title: 'Competitive Market',
+            description: 'Intense rivalry with multiple aggressive competitors. Strategic positioning and differentiation are key to success.'
+        },
+        'recession': {
+            title: 'Economic Recession',
+            description: 'Challenging downturn requiring cost control, efficiency improvements, and strategic adaptation to survive and thrive.'
+        }
+    };
+
+    const desc = descriptions[scenario];
+    const descElement = document.getElementById('scenario-description');
+    descElement.innerHTML = `
+        <div class="card" style="background: rgba(0, 212, 255, 0.1); border-color: var(--cyan-blue);">
+            <h4>${desc.title}</h4>
+            <p>${desc.description}</p>
+        </div>
+    `;
+});
+</script>
+{% endblock %}

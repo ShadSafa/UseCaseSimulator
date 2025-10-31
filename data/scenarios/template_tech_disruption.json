@@ -1,0 +1,118 @@
+{
+  "title": "Technology Disruption",
+  "description": "A rapidly evolving market with new technologies disrupting traditional business models. Innovation and adaptation are key.",
+  "difficulty": "medium",
+  "estimated_duration": 15,
+  "tags": ["technology", "innovation", "disruption"],
+  "version": "1.0",
+  "created_at": "2025-01-01T00:00:00",
+
+  "objectives": [
+    "Achieve 15% market share",
+    "Invest at least 30% of profits in R&D/quality improvements",
+    "Maintain customer satisfaction above 80%"
+  ],
+
+  "challenges": [
+    "Rapid technological changes",
+    "High R&D investment requirements",
+    "Quality expectations increasing over time",
+    "Competitors with superior technology"
+  ],
+
+  "tips": [
+    "Prioritize quality and innovation investments",
+    "Monitor competitor technological advancements",
+    "Balance R&D spending with operational efficiency",
+    "Consider strategic partnerships or acquisitions"
+  ],
+
+  "market_conditions": {
+    "demand_level": 1000.0,
+    "price_index": 1.0,
+    "competition_intensity": 0.6,
+    "economic_indicators": {
+      "gdp_growth": 0.02,
+      "inflation": 0.03,
+      "interest_rate": 0.04
+    },
+    "trend_factors": {
+      "seasonal": 0.0,
+      "trend": 0.01,
+      "cyclical": 0.02
+    }
+  },
+
+  "starting_conditions": {
+    "company": {
+      "id": "player_company",
+      "name": "Legacy Corp",
+      "financial_data": {
+        "revenue": 100000.0,
+        "costs": 85000.0,
+        "profit": 15000.0,
+        "cash": 30000.0,
+        "assets": 200000.0,
+        "liabilities": 170000.0
+      },
+      "operations_data": {
+        "capacity": 1000.0,
+        "efficiency": 0.85,
+        "quality": 0.6,
+        "customer_satisfaction": 0.7,
+        "utilization": 0.0
+      },
+      "resource_data": {
+        "employees": 100,
+        "equipment": 100000.0,
+        "inventory": 50000.0
+      },
+      "market_data": {
+        "market_share": 0.1,
+        "brand_value": 30.0,
+        "competitive_position": 0.5
+      }
+    },
+    "competitors": [
+      {
+        "id": "competitor_1",
+        "name": "TechInnovators",
+        "market_share": 0.25,
+        "aggressiveness": 0.7,
+        "financials": {
+          "revenue": 300000.0,
+          "profit": 45000.0
+        }
+      },
+      {
+        "id": "competitor_2",
+        "name": "DigitalFirst",
+        "market_share": 0.2,
+        "aggressiveness": 0.8,
+        "financials": {
+          "revenue": 250000.0,
+          "profit": 37500.0
+        }
+      },
+      {
+        "id": "competitor_3",
+        "name": "AdaptTech",
+        "market_share": 0.15,
+        "aggressiveness": 0.6,
+        "financials": {
+          "revenue": 200000.0,
+          "profit": 30000.0
+        }
+      }
+    ],
+    "round_number": 0
+  },
+
+  "simulation_config": {
+    "max_rounds": 15,
+    "num_competitors": 3,
+    "initial_market_demand": 1000.0,
+    "market_volatility": 0.2,
+    "event_frequency": 0.3
+  }
+}

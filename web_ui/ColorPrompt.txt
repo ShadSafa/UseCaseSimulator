@@ -1,0 +1,29 @@
+Here is the Color Prompt:
+***
+Primary Colors:
+Cyan Blue: hsl(194, 100%, 50%) or #00d4ff
+Purple: hsl(258, 84%, 58%) or #7c3aed
+Orange Accent: #ff6b35
+Background Colors:
+
+Deep Navy: hsl(222, 100%, 8%) or #000428
+Ocean Blue: hsl(207, 100%, 29%) or #004e92
+Dark Blue: hsl(210, 100%, 12%) or #001f3f
+Main Background Gradient: linear-gradient(135deg, #000428 0%, #004e92 50%, #001f3f 100%)
+Text Colors:
+
+Primary Text: hsl(210, 40%, 95%) or #e2e8f0 (light gray/white)
+Secondary Text: hsl(218, 16%, 65%) or #a0a8bb (medium gray)
+White: #ffffff
+Key Gradients:
+
+Primary Button: linear-gradient(45deg, hsl(194, 100%, 50%), hsl(258, 84%, 58%)) (cyan to purple)
+Hero Title: linear-gradient(45deg, #00d4ff, #0055ff, #80c9ff) (cyan spectrum)
+Section Accents: linear-gradient(45deg, #00d4ff, #ffffff, #7c3aed) (cyan to white to purple)
+Effects:
+
+Glows: rgba(0, 212, 255, 0.3) shadows
+Glass backdrop: rgba(0, 84, 146, 0.1) with blur
+Tech grid: rgba(0, 149, 255, 0.03) overlays
+Design Style: Futuristic tech aesthetic with animated gradients, glowing effects, glassmorphism, and a dark theme emphasizing cyan/purple contrast.
+***

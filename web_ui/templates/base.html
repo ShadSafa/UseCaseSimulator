@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Use Case Simulator{% endblock %}</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <!-- Additional CSS blocks -->
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="{{ url_for('main.index') }}" class="brand-link">
+                    <span class="brand-text">Use Case Simulator</span>
+                </a>
+            </div>
+
+            <div class="nav-menu">
+                {% if game_state %}
+                <a href="{{ url_for('main.dashboard') }}" class="nav-link">Dashboard</a>
+                <a href="{{ url_for('main.analytics') }}" class="nav-link">Analytics</a>
+                {% endif %}
+                <a href="{{ url_for('main.help') }}" class="nav-link">Help</a>
+                <a href="{{ url_for('main.about') }}" class="nav-link">About</a>
+            </div>
+
+            <div class="nav-actions">
+                {% if game_state %}
+                <span class="game-indicator">
+                    Round {{ game_state.round_number }} - {{ game_state.player_company.name }}
+                </span>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <p>&copy; 2025 Use Case Simulator. Built for business education.</p>
+                <div class="footer-links">
+                    <a href="{{ url_for('main.help') }}">Help</a>
+                    <a href="{{ url_for('main.about') }}">About</a>
+                    <a href="https://github.com/ShadSafa/UseCaseSimulator" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Flash Messages -->
+    <div class="flash-messages" id="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <div class="flash-message flash-{{ category }}" data-message="{{ message }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+    <!-- Additional JavaScript blocks -->
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

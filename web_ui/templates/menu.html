@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Menu - Use Case Simulator{% endblock %}
+
+{% block content %}
+<div class="menu-container">
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Use Case Simulator</h1>
+            <p class="hero-subtitle">Master business strategy through interactive simulation</p>
+            <div class="hero-actions">
+                <a href="{{ url_for('main.new_game') }}" class="btn btn-primary btn-large">
+                    <span class="btn-icon">🚀</span>
+                    Start New Simulation
+                </a>
+                <a href="{{ url_for('main.load_game') }}" class="btn btn-secondary btn-large">
+                    <span class="btn-icon">📁</span>
+                    Load Simulation
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-glow"></div>
+            <div class="hero-particles"></div>
+        </div>
+    </div>
+
+    <div class="features-section">
+        <h2 class="section-title">Simulation Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Real-time Analytics</h3>
+                <p>Track KPIs, view trends, and analyze performance with interactive charts</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Strategic Decisions</h3>
+                <p>Make pricing, marketing, investment, and operational decisions</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Achievement System</h3>
+                <p>Unlock achievements and compete on leaderboards</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>Multiple Scenarios</h3>
+                <p>Experience different market conditions and business challenges</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💾</div>
+                <h3>Save & Load</h3>
+                <p>Save progress and resume games anytime</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎓</div>
+                <h3>Educational</h3>
+                <p>Learn business concepts through hands-on simulation</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="stats-section">
+        <h2 class="section-title">Simulation Statistics</h2>
+        <div class="quick-stats">
+            <div class="stat-item">
+                <span class="stat-number">15+</span>
+                <span class="stat-label">KPIs Tracked</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">4</span>
+                <span class="stat-label">Scenarios</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">10+</span>
+                <span class="stat-label">Rounds per Game</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">∞</span>
+                <span class="stat-label">Learning Potential</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-footer">
+        <a href="{{ url_for('main.help') }}" class="link-primary">Need Help?</a>
+        <span class="separator">•</span>
+        <a href="{{ url_for('main.about') }}" class="link-primary">About the Game</a>
+    </div>
+</div>
+{% endblock %}

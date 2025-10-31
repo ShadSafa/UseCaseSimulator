@@ -1,0 +1,118 @@
+{
+  "title": "Economic Recession",
+  "description": "A challenging economic downturn with reduced demand and high competition. Focus on cost control and survival strategies.",
+  "difficulty": "hard",
+  "estimated_duration": 12,
+  "tags": ["economic", "recession", "survival"],
+  "version": "1.0",
+  "created_at": "2025-01-01T00:00:00",
+
+  "objectives": [
+    "Maintain positive profit for 8 rounds",
+    "Reduce costs by 20%",
+    "Preserve at least 80% of starting cash"
+  ],
+
+  "challenges": [
+    "Low market demand",
+    "High inflation and interest rates",
+    "Aggressive price competition",
+    "Limited growth opportunities"
+  ],
+
+  "tips": [
+    "Focus on cost reduction and efficiency improvements",
+    "Consider workforce reductions if necessary",
+    "Build cash reserves for emergencies",
+    "Look for quality improvements to maintain premium pricing"
+  ],
+
+  "market_conditions": {
+    "demand_level": 600.0,
+    "price_index": 0.8,
+    "competition_intensity": 0.9,
+    "economic_indicators": {
+      "gdp_growth": -0.03,
+      "inflation": 0.08,
+      "interest_rate": 0.08
+    },
+    "trend_factors": {
+      "seasonal": -0.05,
+      "trend": -0.02,
+      "cyclical": -0.08
+    }
+  },
+
+  "starting_conditions": {
+    "company": {
+      "id": "player_company",
+      "name": "Struggling Corp",
+      "financial_data": {
+        "revenue": 80000.0,
+        "costs": 75000.0,
+        "profit": 5000.0,
+        "cash": 15000.0,
+        "assets": 150000.0,
+        "liabilities": 135000.0
+      },
+      "operations_data": {
+        "capacity": 800.0,
+        "efficiency": 0.8,
+        "quality": 0.8,
+        "customer_satisfaction": 0.75,
+        "utilization": 0.0
+      },
+      "resource_data": {
+        "employees": 80,
+        "equipment": 80000.0,
+        "inventory": 40000.0
+      },
+      "market_data": {
+        "market_share": 0.08,
+        "brand_value": 40.0,
+        "competitive_position": 0.45
+      }
+    },
+    "competitors": [
+      {
+        "id": "competitor_1",
+        "name": "CostCutter Inc",
+        "market_share": 0.25,
+        "aggressiveness": 0.9,
+        "financials": {
+          "revenue": 200000.0,
+          "profit": 15000.0
+        }
+      },
+      {
+        "id": "competitor_2",
+        "name": "BudgetTech",
+        "market_share": 0.22,
+        "aggressiveness": 0.8,
+        "financials": {
+          "revenue": 180000.0,
+          "profit": 12000.0
+        }
+      },
+      {
+        "id": "competitor_3",
+        "name": "LeanOperations",
+        "market_share": 0.18,
+        "aggressiveness": 0.7,
+        "financials": {
+          "revenue": 160000.0,
+          "profit": 10000.0
+        }
+      }
+    ],
+    "round_number": 0
+  },
+
+  "simulation_config": {
+    "max_rounds": 12,
+    "num_competitors": 3,
+    "initial_market_demand": 600.0,
+    "market_volatility": 0.25,
+    "event_frequency": 0.35
+  }
+}
