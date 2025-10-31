@@ -53,7 +53,7 @@ def new_game():
             'scenario': scenario
         }
 
-        flash(f'New game setup complete! Starting as {company_name}', 'success')
+        flash(f'New simulation setup complete! Starting as {company_name}', 'success')
         return redirect(url_for('game.initialize_game'))
 
     return render_template('new_game.html')

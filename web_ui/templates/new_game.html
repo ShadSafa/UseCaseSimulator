@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}New Game - Use Case Simulator{% endblock %}
+{% block title %}New Simulation - Use Case Simulator{% endblock %}
 
 {% block content %}
 <div class="container">
     <div class="card">
-        <h1>Start New Game</h1>
+        <h1>Start New Simulation</h1>
         <p class="text-center mb-4">Create your business empire and compete in the market!</p>
 
         <form action="{{ url_for('main.new_game') }}" method="post" class="form">

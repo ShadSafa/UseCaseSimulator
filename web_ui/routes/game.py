@@ -45,7 +45,7 @@ def initialize_game():
         set_game_state(game_state)
         session['engine'] = engine
 
-        flash(f'Welcome to Use Case Simulator, {company_name}!', 'success')
+        flash(f'Welcome to Use Case Simulator, {company_name}! Simulation initialized successfully.', 'success')
         return redirect(url_for('main.dashboard'))
 
     except Exception as e:
