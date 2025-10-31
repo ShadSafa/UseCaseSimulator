@@ -186,7 +186,7 @@ def submit_decision():
                 'message': 'No active game session'
             }), 400
 
-        # Process decisions
+        # Process decisions - convert from form data format to engine format
         processed_decisions = {}
         for key, value in decisions.items():
             if isinstance(value, dict):
@@ -194,8 +194,38 @@ def submit_decision():
             else:
                 processed_decisions[key] = {'value': value}
 
+        # Also check for direct form fields (from HTML form submission)
+        form_decisions = {}
+        if request.form:
+            # Pricing decision
+            if request.form.get('pricing'):
+                form_decisions['price_change'] = {'new_price': float(request.form.get('pricing'))}
+
+            # Marketing budget
+            if request.form.get('marketing'):
+                form_decisions['marketing_campaign'] = {'budget': float(request.form.get('marketing'))}
+
+            # Capacity expansion
+            if request.form.get('capacity_expansion'):
+                form_decisions['capacity_expansion'] = {'expansion_amount': float(request.form.get('capacity_expansion'))}
+
+            # Quality improvement
+            if request.form.get('quality_improvement'):
+                form_decisions['quality_improvement'] = {'investment': float(request.form.get('quality_improvement'))}
+
+            # Hiring
+            if request.form.get('hiring'):
+                form_decisions['hiring'] = {'num_employees': int(request.form.get('hiring'))}
+
+            # Equipment purchase
+            if request.form.get('equipment_purchase'):
+                form_decisions['equipment_purchase'] = {'equipment_value': float(request.form.get('equipment_purchase'))}
+
+        # Use form decisions if available, otherwise use JSON decisions
+        final_decisions = form_decisions if form_decisions else processed_decisions
+
         # Run the round
-        round_results = engine.run_round(processed_decisions)
+        round_results = engine.run_round(final_decisions)
 
         # Update game state
         updated_state = SimulationState.from_dict(round_results['game_state'])
@@ -208,9 +238,14 @@ def submit_decision():
         })
 
     except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
+        print(f"Decision processing error: {str(e)}")
+        print(f"Traceback: {error_details}")
         return jsonify({
             'success': False,
-            'message': f'Error processing decision: {str(e)}'
+            'message': f'Error processing decision: {str(e)}',
+            'details': error_details
         }), 500
 
 

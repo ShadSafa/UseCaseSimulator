@@ -114,9 +114,10 @@ class UseCaseSimulator {
 
         } catch (error) {
             console.error('Form submission error:', error);
+            // Show error for longer so user can read it
             this.ui.showError(error.message || 'An error occurred');
-        } finally {
-            this.ui.hideLoading(form);
+            // Keep loading spinner visible during error display
+            // Don't hide it automatically - let user see the error
         }
     }
 
@@ -204,10 +205,19 @@ class UseCaseSimulator {
             if (!decisions[key]) delete decisions[key];
         });
 
+        console.log('Submitting decisions:', decisions);
+
         const response = await this.api.post('/api/game/decision', { decisions });
+        console.log('Decision response:', response);
+
         if (response.success) {
             this.session.updateGameState(response.data);
             this.ui.updateRoundResults(response.data);
+        } else {
+            console.error('Decision failed:', response.message);
+            if (response.details) {
+                console.error('Error details:', response.details);
+            }
         }
         return response;
     }
@@ -348,23 +358,94 @@ class UI {
     }
 
     showError(message) {
+        // Create a modal dialog for errors that stays visible
+        this.showErrorModal(message);
         this.showFlashMessage(message, 'error');
+    }
+
+    showErrorModal(message) {
+        // Remove any existing error modal
+        const existingModal = document.getElementById('error-modal');
+        if (existingModal) existingModal.remove();
+
+        // Create modal overlay
+        const modal = document.createElement('div');
+        modal.id = 'error-modal';
+        modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        `;
+
+        // Create modal content
+        const modalContent = document.createElement('div');
+        modalContent.style.cssText = `
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        `;
+
+        modalContent.innerHTML = `
+            <h3 style="color: #d32f2f; margin-top: 0;">Error Occurred</h3>
+            <pre style="white-space: pre-wrap; word-wrap: break-word; font-family: monospace; font-size: 12px; background: #f5f5f5; padding: 10px; border-radius: 4px;">${message}</pre>
+            <div style="text-align: right; margin-top: 15px;">
+                <button id="close-error-modal" style="padding: 8px 16px; background: #d32f2f; color: white; border: none; border-radius: 4px; cursor: pointer;">Close</button>
+            </div>
+        `;
+
+        modal.appendChild(modalContent);
+        document.body.appendChild(modal);
+
+        // Close button handler
+        document.getElementById('close-error-modal').onclick = () => {
+            modal.remove();
+        };
+
+        // Click outside to close
+        modal.onclick = (e) => {
+            if (e.target === modal) {
+                modal.remove();
+            }
+        };
     }
 
     showFlashMessage(message, type = 'info') {
         const flashContainer = document.getElementById('flash-messages');
         if (!flashContainer) return;
 
+        // Clear any existing messages first
+        const existingMessages = flashContainer.querySelectorAll('.flash-message');
+        existingMessages.forEach(msg => msg.remove());
+
         const flashMessage = document.createElement('div');
         flashMessage.className = `flash-message flash-${type}`;
         flashMessage.textContent = message;
+        flashMessage.style.position = 'fixed';
+        flashMessage.style.top = '20px';
+        flashMessage.style.right = '20px';
+        flashMessage.style.zIndex = '9999';
+        flashMessage.style.minWidth = '300px';
 
         flashContainer.appendChild(flashMessage);
 
-        // Auto-remove after 2 seconds
-        setTimeout(() => {
-            flashMessage.remove();
-        }, 2000);
+        // For errors, don't auto-remove - keep them visible
+        if (type !== 'error') {
+            setTimeout(() => {
+                flashMessage.remove();
+            }, 2000);
+        }
+        // Error messages stay until manually dismissed or page refresh
     }
 
     updateDashboard(gameState) {
