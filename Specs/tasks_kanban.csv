@@ -1,0 +1,61 @@
+Task_ID,Title,Description,Status,Dependencies,Phase,Color
+T1-001,Setup Python Project,Initialize Python project in VS Code with virtualenv and requirements.txt,To Do,,Setup,Blue
+T1-002,Create Project Folder Structure,Define folders for modules, assets, data, and tests,To Do,T1-001,Setup,Blue
+T1-003,Setup Git Repository,Initialize Git repo and create .gitignore,To Do,T1-001,Setup,Blue
+T1-004,Setup Python Linter and Formatter,Configure pylint/flake8 and black for code quality,To Do,T1-001,Setup,Blue
+T1-005,Install Required Libraries,Install pandas, numpy, matplotlib, and others as needed,To Do,T1-001,Setup,Blue
+T2-001,Design Simulation Engine Architecture,Outline classes, methods, and flow of simulation,To Do,T1-002,Core Modules,Green
+T2-002,Implement Base Simulation Engine,Create core engine class for rounds and events,To Do,T2-001,Core Modules,Green
+T2-003,Define Simulation Round Logic,Implement round progression and event triggering,To Do,T2-002,Core Modules,Green
+T2-004,Create Company Class,Define attributes for financials, resources, and departments,To Do,T2-001,Core Modules,Green
+T2-005,Implement Company Financial Methods,Add methods for revenue, cost, and profit calculation,To Do,T2-004,Core Modules,Green
+T2-006,Define Decision-Making Methods,Methods for player choices affecting operations,To Do,T2-004,Core Modules,Green
+T2-007,Create Market Class,Define market variables like demand, pricing, and trends,To Do,T2-001,Core Modules,Green
+T2-008,Implement Market Demand Simulation,Calculate demand based on price and market conditions,To Do,T2-007,Core Modules,Green
+T2-009,Implement Competitor AI,Simple AI for competitor companies,To Do,T2-007,Core Modules,Green
+T2-010,Design Event System,Define types of events (random and scheduled),To Do,T2-001,Core Modules,Green
+T2-011,Implement Random Events,Random events affecting market or companies,To Do,T2-010,Core Modules,Green
+T2-012,Implement Scheduled Events,Events triggered at specific rounds,To Do,T2-010,Core Modules,Green
+T2-013,Implement Multi-Round Simulation,Allow multiple consecutive rounds to run,To Do,T2-003,Core Modules,Green
+T2-014,Create Competitor Profile Templates,Define AI competitors’ attributes,To Do,T2-009,Core Modules,Green
+T2-015,Balance Market Variables,Test and adjust market dynamics for fairness,To Do,T2-007,Core Modules,Green
+T2-016,Balance Random Events,Adjust probability and impact of events,To Do,T2-011,Core Modules,Green
+T2-017,Implement Logging,Log decisions, events, and results for debugging,To Do,T2-001,Core Modules,Green
+T2-018,Refactor Code for Modularity,Ensure each module is independent and reusable,To Do,T2-001,Core Modules,Green
+T2-019,Optimize Performance,Profile simulation and improve efficiency,To Do,T2-002,Core Modules,Green
+T2-020,Document Codebase,Provide docstrings and module documentation,To Do,T2-018,Core Modules,Green
+T3-001,Create UI Module,Console-based interface for player input and output,To Do,T2-001,User Interface,Orange
+T3-002,Implement Decision Input Forms,Collect player decisions via console,To Do,T3-001,User Interface,Orange
+T3-003,Implement Dashboard Output,Show company stats and KPIs in console,To Do,T3-001,User Interface,Orange
+T3-004,Implement End-of-Round Summary,Show summary of results after each round,To Do,T2-013,User Interface,Orange
+T3-005,Implement Player Notifications,Notify players of events or outcomes,To Do,T3-001,User Interface,Orange
+T3-006,Implement User Settings,Allow custom settings for rounds, players, or difficulty,To Do,T2-001,User Interface,Orange
+T4-001,Design Analytics Module,Define KPIs, ranking, and reports,To Do,T2-001,Analytics & Reports,Purple
+T4-002,Implement KPI Calculations,Compute financial, operational, and market KPIs,To Do,T4-001,Analytics & Reports,Purple
+T4-003,Implement Rankings,Rank players by KPIs at end of each round,To Do,T4-002,Analytics & Reports,Purple
+T4-004,Create Report Generator,Export simulation reports to CSV/Excel,To Do,T4-001,Analytics & Reports,Purple
+T4-005,Create Leaderboard Feature,Track and display top-performing companies,To Do,T4-003,Analytics & Reports,Purple
+T4-006,Create Visual Charts,Optional matplotlib charts for KPIs and results,To Do,T4-002,Analytics & Reports,Purple
+T4-007,Integrate Charts with Dashboard,Show charts in console UI or separate window,To Do,T4-006,Analytics & Reports,Purple
+T5-001,Implement Data Persistence,Save and load game state using JSON/SQLite,To Do,T2-001,Data Persistence,Teal
+T5-002,Save Company State,Persist each company's current state,To Do,T5-001,Data Persistence,Teal
+T5-003,Load Company State,Load saved company state to resume simulation,To Do,T5-001,Data Persistence,Teal
+T5-004,Save Market State,Persist market variables for continuity,To Do,T5-001,Data Persistence,Teal
+T5-005,Load Market State,Load market variables from saved state,To Do,T5-001,Data Persistence,Teal
+T6-001,Scenario Loader,Load predefined market scenarios from JSON,To Do,T2-001,Scenario Management,Pink
+T6-002,Create Scenario JSON Templates,Define multiple starting scenarios,To Do,T6-001,Scenario Management,Pink
+T6-003,Implement Scenario Switching,Allow loading different scenarios at runtime,To Do,T6-001,Scenario Management,Pink
+T7-001,Design Unit Test Framework,Use unittest or pytest for testing,To Do,T1-004,Testing & QA,Red
+T7-002,Write Tests for Company Module,Validate company calculations and updates,To Do,T7-001,Testing & QA,Red
+T7-003,Write Tests for Market Module,Validate demand, pricing, and AI logic,To Do,T7-001,Testing & QA,Red
+T7-004,Write Tests for Simulation Engine,Validate round progression and events,To Do,T7-001,Testing & QA,Red
+T7-005,Write Tests for Analytics Module,Validate KPIs and rankings,To Do,T7-001,Testing & QA,Red
+T7-006,Write Tests for Persistence,Validate saving and loading of state,To Do,T7-001,Testing & QA,Red
+T7-007,Setup Continuous Integration,Optional CI/CD pipeline to run tests automatically,To Do,T7-001,Testing & QA,Red
+T8-001,Create Initial Tutorial/Guide,Guide for new players to understand simulation,To Do,T3-001,Tutorials / Guides,Yellow
+T9-001,Conduct Playtesting,Run multiple simulations to identify bugs or balance issues,To Do,T2-013,Playtesting / Final Validation,Gray
+T9-002,Final Testing and Validation,Ensure full simulation runs correctly and is bug-free,To Do,T9-001,Playtesting / Final Validation,Gray
+T1-006,Prepare Deployment Scripts,Prepare scripts to run simulation on different systems,To Do,T1-001,Setup,Blue
+T1-007,Prepare GitHub README,Write overview, installation, and usage instructions,To Do,T1-001,Setup,Blue
+T1-008,Add License File,Include MIT or other appropriate license,To Do,T1-001,Setup,Blue
+T1-009,Setup Issue Templates,Create templates for bug reports and feature requests,To Do,T1-001,Setup,Blue
