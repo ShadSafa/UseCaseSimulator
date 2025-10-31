@@ -1,0 +1,473 @@
+{% extends "base.html" %}
+
+{% block title %}Scenario Designer - Use Case Simulator{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <h1>Scenario Designer</h1>
+        <p class="text-center mb-4">Create custom simulation scenarios for your students</p>
+
+        <div class="scenario-designer">
+            <!-- Scenario Basic Info -->
+            <div class="scenario-section">
+                <h3>📋 Scenario Information</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="scenario_name" class="form-label">Scenario Name</label>
+                        <input type="text" id="scenario_name" class="form-input"
+                               placeholder="e.g., Tech Startup Challenge" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="scenario_description" class="form-label">Description</label>
+                        <textarea id="scenario_description" class="form-input" rows="3"
+                                  placeholder="Describe the business scenario and learning objectives"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="difficulty" class="form-label">Difficulty Level</label>
+                        <select id="difficulty" class="form-input">
+                            <option value="easy">Easy</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="hard">Hard</option>
+                            <option value="expert">Expert</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="max_rounds" class="form-label">Maximum Rounds</label>
+                        <input type="number" id="max_rounds" class="form-input"
+                               value="10" min="5" max="20">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Initial Company Setup -->
+            <div class="scenario-section">
+                <h3>🏢 Initial Company Setup</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="initial_cash" class="form-label">Starting Cash ($)</label>
+                        <input type="number" id="initial_cash" class="form-input"
+                               value="50000" min="10000" max="500000" step="5000">
+                    </div>
+                    <div class="form-group">
+                        <label for="initial_revenue" class="form-label">Starting Revenue ($)</label>
+                        <input type="number" id="initial_revenue" class="form-input"
+                               value="100000" min="50000" max="1000000" step="10000">
+                    </div>
+                    <div class="form-group">
+                        <label for="initial_market_share" class="form-label">Initial Market Share (%)</label>
+                        <input type="number" id="initial_market_share" class="form-input"
+                               value="15" min="5" max="50" step="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="initial_employees" class="form-label">Starting Employees</label>
+                        <input type="number" id="initial_employees" class="form-input"
+                               value="100" min="20" max="500" step="10">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Conditions -->
+            <div class="scenario-section">
+                <h3>📊 Market Conditions</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="market_demand" class="form-label">Market Demand Level</label>
+                        <select id="market_demand" class="form-input">
+                            <option value="low">Low (600)</option>
+                            <option value="medium" selected>Medium (1000)</option>
+                            <option value="high">High (1500)</option>
+                            <option value="very_high">Very High (2000)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="competition_level" class="form-label">Competition Intensity</label>
+                        <select id="competition_level" class="form-input">
+                            <option value="low">Low (0.2)</option>
+                            <option value="medium" selected>Medium (0.5)</option>
+                            <option value="high">High (0.8)</option>
+                            <option value="intense">Intense (1.0)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="economic_conditions" class="form-label">Economic Conditions</label>
+                        <select id="economic_conditions" class="form-input">
+                            <option value="recession">Recession</option>
+                            <option value="slow_growth" selected>Slow Growth</option>
+                            <option value="steady">Steady Growth</option>
+                            <option value="boom">Economic Boom</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="seasonal_effects" class="form-label">Seasonal Effects</label>
+                        <select id="seasonal_effects" class="form-input">
+                            <option value="none" selected>None</option>
+                            <option value="mild">Mild</option>
+                            <option value="moderate">Moderate</option>
+                            <option value="strong">Strong</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decision Constraints -->
+            <div class="scenario-section">
+                <h3>🎯 Decision Constraints</h3>
+                <div class="constraints-grid">
+                    <div class="constraint-item">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="limit_pricing" checked>
+                            <span class="checkmark"></span>
+                            Limit pricing changes (±20% per round)
+                        </label>
+                    </div>
+                    <div class="constraint-item">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="limit_marketing" checked>
+                            <span class="checkmark"></span>
+                            Marketing budget limits
+                        </label>
+                    </div>
+                    <div class="constraint-item">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="limit_hiring">
+                            <span class="checkmark"></span>
+                            Hiring/firing restrictions
+                        </label>
+                    </div>
+                    <div class="constraint-item">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="require_balance">
+                            <span class="checkmark"></span>
+                            Require balanced decisions
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Objectives -->
+            <div class="scenario-section">
+                <h3>🎓 Learning Objectives</h3>
+                <div class="objectives-list">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="obj_pricing" checked>
+                        <span class="checkmark"></span>
+                        Understand pricing strategy impacts
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="obj_marketing" checked>
+                        <span class="checkmark"></span>
+                        Learn marketing budget allocation
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="obj_operations" checked>
+                        <span class="checkmark"></span>
+                        Master operational efficiency
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="obj_strategy">
+                        <span class="checkmark"></span>
+                        Develop long-term strategic thinking
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="obj_risk">
+                        <span class="checkmark"></span>
+                        Understand risk management
+                    </label>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="scenario-actions">
+                <button class="btn btn-primary btn-large" onclick="previewScenario()">
+                    <span class="btn-icon">👁️</span>
+                    Preview Scenario
+                </button>
+                <button class="btn btn-secondary btn-large" onclick="saveScenario()">
+                    <span class="btn-icon">💾</span>
+                    Save Scenario
+                </button>
+                <button class="btn btn-secondary" onclick="exportScenario()">
+                    <span class="btn-icon">📤</span>
+                    Export Scenario
+                </button>
+                <a href="{{ url_for('main.menu') }}" class="btn">
+                    <span class="btn-icon">⬅️</span>
+                    Back to Menu
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.scenario-designer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.scenario-section {
+    margin-bottom: var(--spacing-2xl);
+    padding: var(--spacing-xl);
+    background: var(--glass-backdrop);
+    border: 1px solid rgba(0, 212, 255, 0.1);
+    border-radius: var(--radius-lg);
+}
+
+.scenario-section h3 {
+    margin-bottom: var(--spacing-lg);
+    color: var(--cyan-blue);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.constraints-grid,
+.objectives-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.constraint-item,
+.objectives-list label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: rgba(0, 84, 146, 0.1);
+    border-radius: var(--radius-sm);
+    transition: var(--transition-fast);
+}
+
+.constraint-item:hover,
+.objectives-list label:hover {
+    background: rgba(0, 84, 146, 0.2);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    width: 100%;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--cyan-blue);
+    margin: 0;
+}
+
+.checkmark {
+    display: none; /* Hide custom checkmark, use browser default */
+}
+
+/* Custom checkbox styling removed - using browser defaults */
+
+.scenario-actions {
+    display: flex;
+    gap: var(--spacing-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--spacing-2xl);
+}
+
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .constraints-grid,
+    .objectives-list {
+        grid-template-columns: 1fr;
+    }
+
+    .scenario-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style>
+
+<script>
+// Scenario designer functionality
+function previewScenario() {
+    const scenarioData = collectScenarioData();
+    console.log('Scenario Preview:', scenarioData);
+
+    // Show preview modal or redirect to preview page
+    alert('Scenario preview feature coming soon! Check console for scenario data.');
+}
+
+function saveScenario() {
+    const scenarioData = collectScenarioData();
+
+    // Send to server for saving
+    fetch('/api/scenarios/save', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(scenarioData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showFlashMessage(`✅ Scenario "${scenarioData.name}" saved successfully!`, 'success');
+        } else {
+            showFlashMessage('❌ Failed to save scenario', 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Error saving scenario:', error);
+        showFlashMessage('❌ Error saving scenario', 'error');
+    });
+}
+
+function exportScenario() {
+    const scenarioData = collectScenarioData();
+    const dataStr = JSON.stringify(scenarioData, null, 2);
+    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+
+    const exportFileDefaultName = `${scenarioData.name.toLowerCase().replace(/\s+/g, '_')}_scenario.json`;
+
+    const linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();
+
+    showFlashMessage('📤 Scenario exported successfully!', 'success');
+}
+
+function collectScenarioData() {
+    return {
+        name: document.getElementById('scenario_name').value || 'Unnamed Scenario',
+        description: document.getElementById('scenario_description').value,
+        difficulty: document.getElementById('difficulty').value,
+        max_rounds: parseInt(document.getElementById('max_rounds').value),
+
+        initial_setup: {
+            cash: parseFloat(document.getElementById('initial_cash').value),
+            revenue: parseFloat(document.getElementById('initial_revenue').value),
+            market_share: parseFloat(document.getElementById('initial_market_share').value),
+            employees: parseInt(document.getElementById('initial_employees').value)
+        },
+
+        market_conditions: {
+            demand_level: document.getElementById('market_demand').value,
+            competition_intensity: document.getElementById('competition_level').value,
+            economic_conditions: document.getElementById('economic_conditions').value,
+            seasonal_effects: document.getElementById('seasonal_effects').value
+        },
+
+        constraints: {
+            limit_pricing: document.getElementById('limit_pricing').checked,
+            limit_marketing: document.getElementById('limit_marketing').checked,
+            limit_hiring: document.getElementById('limit_hiring').checked,
+            require_balance: document.getElementById('require_balance').checked
+        },
+
+        learning_objectives: {
+            pricing_strategy: document.getElementById('obj_pricing').checked,
+            marketing_allocation: document.getElementById('obj_marketing').checked,
+            operational_efficiency: document.getElementById('obj_operations').checked,
+            strategic_thinking: document.getElementById('obj_strategy').checked,
+            risk_management: document.getElementById('obj_risk').checked
+        },
+
+        created_at: new Date().toISOString(),
+        version: '1.0'
+    };
+}
+
+function showFlashMessage(message, type = 'info') {
+    const flashContainer = document.getElementById('flash-messages');
+    if (!flashContainer) return;
+
+    const flashMessage = document.createElement('div');
+    flashMessage.className = `flash-message flash-${type}`;
+    flashMessage.textContent = message;
+
+    flashContainer.appendChild(flashMessage);
+
+    // Auto-remove after 2 seconds
+    setTimeout(() => {
+        flashMessage.remove();
+    }, 2000);
+}
+
+// Auto-save draft functionality
+let autoSaveTimeout;
+function scheduleAutoSave() {
+    clearTimeout(autoSaveTimeout);
+    autoSaveTimeout = setTimeout(() => {
+        const scenarioData = collectScenarioData();
+        localStorage.setItem('scenario_draft', JSON.stringify(scenarioData));
+        console.log('Draft auto-saved');
+    }, 5000);
+}
+
+// Auto-save on any input change
+document.addEventListener('input', scheduleAutoSave);
+document.addEventListener('change', scheduleAutoSave);
+
+// Load draft on page load
+window.addEventListener('load', () => {
+    const draft = localStorage.getItem('scenario_draft');
+    if (draft) {
+        try {
+            const scenarioData = JSON.parse(draft);
+            loadScenarioData(scenarioData);
+            showFlashMessage('📝 Draft loaded from previous session', 'info');
+        } catch (e) {
+            console.error('Error loading draft:', e);
+        }
+    }
+});
+
+function loadScenarioData(data) {
+    // Populate form fields with loaded data
+    document.getElementById('scenario_name').value = data.name || '';
+    document.getElementById('scenario_description').value = data.description || '';
+    document.getElementById('difficulty').value = data.difficulty || 'medium';
+    document.getElementById('max_rounds').value = data.max_rounds || 10;
+
+    if (data.initial_setup) {
+        document.getElementById('initial_cash').value = data.initial_setup.cash || 50000;
+        document.getElementById('initial_revenue').value = data.initial_setup.revenue || 100000;
+        document.getElementById('initial_market_share').value = data.initial_setup.market_share || 15;
+        document.getElementById('initial_employees').value = data.initial_setup.employees || 100;
+    }
+
+    if (data.market_conditions) {
+        document.getElementById('market_demand').value = data.market_conditions.demand_level || 'medium';
+        document.getElementById('competition_level').value = data.market_conditions.competition_intensity || 'medium';
+        document.getElementById('economic_conditions').value = data.market_conditions.economic_conditions || 'slow_growth';
+        document.getElementById('seasonal_effects').value = data.market_conditions.seasonal_effects || 'none';
+    }
+
+    if (data.constraints) {
+        document.getElementById('limit_pricing').checked = data.constraints.limit_pricing !== false;
+        document.getElementById('limit_marketing').checked = data.constraints.limit_marketing !== false;
+        document.getElementById('limit_hiring').checked = data.constraints.limit_hiring || false;
+        document.getElementById('require_balance').checked = data.constraints.require_balance || false;
+    }
+
+    if (data.learning_objectives) {
+        document.getElementById('obj_pricing').checked = data.learning_objectives.pricing_strategy !== false;
+        document.getElementById('obj_marketing').checked = data.learning_objectives.marketing_allocation !== false;
+        document.getElementById('obj_operations').checked = data.learning_objectives.operational_efficiency !== false;
+        document.getElementById('obj_strategy').checked = data.learning_objectives.strategic_thinking || false;
+        document.getElementById('obj_risk').checked = data.learning_objectives.risk_management || false;
+    }
+}
+</script>
+{% endblock %}

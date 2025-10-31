@@ -312,8 +312,8 @@ def get_competitor_data():
 
 
 @api_bp.route('/game/scenarios')
-def get_scenarios():
-    """Get available scenarios."""
+def get_game_scenarios():
+    """Get available game scenarios."""
     try:
         scenarios = [
             {
@@ -341,6 +341,97 @@ def get_scenarios():
                 'difficulty': 'Hard'
             }
         ]
+
+        return jsonify({
+            'success': True,
+            'data': scenarios
+        })
+
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'message': f'Error retrieving scenarios: {str(e)}'
+        }), 500
+
+
+@api_bp.route('/scenarios/save', methods=['POST'])
+def save_scenario():
+    """Save a custom scenario."""
+    try:
+        data = request.get_json() or {}
+
+        if not data:
+            return jsonify({
+                'success': False,
+                'message': 'No scenario data provided'
+            }), 400
+
+        scenario_name = data.get('name', 'Unnamed Scenario')
+        if not scenario_name or scenario_name == 'Unnamed Scenario':
+            return jsonify({
+                'success': False,
+                'message': 'Scenario name is required'
+            }), 400
+
+        # Create scenarios directory if it doesn't exist
+        scenarios_dir = os.path.join(os.getcwd(), 'data', 'scenarios')
+        os.makedirs(scenarios_dir, exist_ok=True)
+
+        # Save scenario as JSON file
+        filename = f"{scenario_name.lower().replace(' ', '_').replace('/', '_')}.json"
+        filepath = os.path.join(scenarios_dir, filename)
+
+        # Remove metadata before saving
+        save_data = data.copy()
+        save_data.pop('created_at', None)  # Remove timestamp for cleaner JSON
+
+        with open(filepath, 'w') as f:
+            import json
+            json.dump(save_data, f, indent=2)
+
+        return jsonify({
+            'success': True,
+            'message': f'Scenario "{scenario_name}" saved successfully',
+            'filename': filename
+        })
+
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'message': f'Error saving scenario: {str(e)}'
+        }), 500
+
+
+@api_bp.route('/scenarios')
+def get_scenarios():
+    """Get list of available custom scenarios."""
+    try:
+        scenarios_dir = os.path.join(os.getcwd(), 'data', 'scenarios')
+        scenarios = []
+
+        if os.path.exists(scenarios_dir):
+            for file in os.listdir(scenarios_dir):
+                if file.endswith('.json'):
+                    try:
+                        filepath = os.path.join(scenarios_dir, file)
+                        with open(filepath, 'r') as f:
+                            scenario_data = json.load(f)
+
+                        scenarios.append({
+                            'id': file.replace('.json', ''),
+                            'name': scenario_data.get('name', 'Unnamed'),
+                            'description': scenario_data.get('description', ''),
+                            'difficulty': scenario_data.get('difficulty', 'medium'),
+                            'max_rounds': scenario_data.get('max_rounds', 10),
+                            'filename': file,
+                            'created': os.path.getmtime(filepath)
+                        })
+                    except Exception as e:
+                        # Skip corrupted scenario files
+                        continue
+
+        # Sort by creation time (newest first)
+        scenarios.sort(key=lambda x: x['created'], reverse=True)
 
         return jsonify({
             'success': True,

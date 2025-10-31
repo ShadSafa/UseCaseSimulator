@@ -1,0 +1,512 @@
+{
+  "leaderboards": {
+    "overall": [
+      {
+        "company_id": "player_company",
+        "company_name": "Player Company",
+        "score": 41.775,
+        "rank": 1,
+        "criteria": "overall",
+        "achieved_at": "2025-11-01T02:17:11.620211",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 7.5,
+            "operational": 54.5,
+            "market": 41.0,
+            "customer": 78.25
+          },
+          "percentile": 100.0,
+          "trend": "stable"
+        }
+      }
+    ],
+    "financial": [
+      {
+        "company_id": "player_company",
+        "company_name": "Player Company",
+        "score": 7.5,
+        "rank": 1,
+        "criteria": "financial",
+        "achieved_at": "2025-11-01T02:17:11.624710",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 7.5,
+            "operational": 54.5,
+            "market": 41.0,
+            "customer": 78.25
+          },
+          "percentile": 100.0,
+          "trend": "stable"
+        }
+      }
+    ],
+    "operational": [
+      {
+        "company_id": "player_company",
+        "company_name": "Player Company",
+        "score": 54.5,
+        "rank": 1,
+        "criteria": "operational",
+        "achieved_at": "2025-11-01T02:17:11.627843",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 7.5,
+            "operational": 54.5,
+            "market": 41.0,
+            "customer": 78.25
+          },
+          "percentile": 100.0,
+          "trend": "stable"
+        }
+      }
+    ],
+    "market": [
+      {
+        "company_id": "player_company",
+        "company_name": "Player Company",
+        "score": 41.0,
+        "rank": 1,
+        "criteria": "market",
+        "achieved_at": "2025-11-01T02:17:11.631547",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 7.5,
+            "operational": 54.5,
+            "market": 41.0,
+            "customer": 78.25
+          },
+          "percentile": 100.0,
+          "trend": "stable"
+        }
+      }
+    ],
+    "customer": [
+      {
+        "company_id": "player_company",
+        "company_name": "Player Company",
+        "score": 78.25,
+        "rank": 1,
+        "criteria": "customer",
+        "achieved_at": "2025-11-01T02:17:11.635270",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 7.5,
+            "operational": 54.5,
+            "market": 41.0,
+            "customer": 78.25
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      }
+    ],
+    "weekly": [
+      {
+        "company_id": "player_company",
+        "company_name": "Player Company",
+        "score": 78.25,
+        "rank": 1,
+        "criteria": "customer",
+        "achieved_at": "2025-11-01T02:17:11.560227",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 7.5,
+            "operational": 54.5,
+            "market": 41.0,
+            "customer": 78.25
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      },
+      {
+        "company_id": "player_company",
+        "company_name": "Player Company",
+        "score": 78.25,
+        "rank": 1,
+        "criteria": "customer",
+        "achieved_at": "2025-11-01T02:17:11.578148",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 7.5,
+            "operational": 54.5,
+            "market": 41.0,
+            "customer": 78.25
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      },
+      {
+        "company_id": "player_company",
+        "company_name": "Player Company",
+        "score": 78.25,
+        "rank": 1,
+        "criteria": "customer",
+        "achieved_at": "2025-11-01T02:17:11.593935",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 7.5,
+            "operational": 51.5,
+            "market": 37.0,
+            "customer": 78.25
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      },
+      {
+        "company_id": "player_company",
+        "company_name": "Player Company",
+        "score": 78.25,
+        "rank": 1,
+        "criteria": "customer",
+        "achieved_at": "2025-11-01T02:17:11.614131",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 7.5,
+            "operational": 54.5,
+            "market": 41.0,
+            "customer": 78.25
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      },
+      {
+        "company_id": "player_company",
+        "company_name": "Player Company",
+        "score": 78.25,
+        "rank": 1,
+        "criteria": "customer",
+        "achieved_at": "2025-11-01T02:17:11.635270",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 7.5,
+            "operational": 54.5,
+            "market": 41.0,
+            "customer": 78.25
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      },
+      {
+        "company_id": "test_company",
+        "company_name": "Test Company",
+        "score": 63.2,
+        "rank": 1,
+        "criteria": "customer",
+        "achieved_at": "2025-11-01T02:09:07.012101",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 16.25,
+            "operational": 59.2,
+            "market": 41.0,
+            "customer": 63.2
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      },
+      {
+        "company_id": "test_company",
+        "company_name": "Test Company",
+        "score": 63.2,
+        "rank": 1,
+        "criteria": "customer",
+        "achieved_at": "2025-11-01T02:13:24.374443",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 16.25,
+            "operational": 59.2,
+            "market": 41.0,
+            "customer": 63.2
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      },
+      {
+        "company_id": "player_company",
+        "company_name": "Player Company",
+        "score": 63.2,
+        "rank": 1,
+        "criteria": "customer",
+        "achieved_at": "2025-11-01T02:16:49.255966",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 16.25,
+            "operational": 59.2,
+            "market": 41.0,
+            "customer": 63.2
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      },
+      {
+        "company_id": "test_company",
+        "company_name": "Test Company",
+        "score": 59.2,
+        "rank": 1,
+        "criteria": "operational",
+        "achieved_at": "2025-11-01T02:09:07.006487",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 16.25,
+            "operational": 59.2,
+            "market": 41.0,
+            "customer": 63.2
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      },
+      {
+        "company_id": "test_company",
+        "company_name": "Test Company",
+        "score": 59.2,
+        "rank": 1,
+        "criteria": "operational",
+        "achieved_at": "2025-11-01T02:13:24.366626",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 16.25,
+            "operational": 59.2,
+            "market": 41.0,
+            "customer": 63.2
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      }
+    ],
+    "monthly": [
+      {
+        "company_id": "player_company",
+        "company_name": "Player Company",
+        "score": 78.25,
+        "rank": 1,
+        "criteria": "customer",
+        "achieved_at": "2025-11-01T02:17:11.560227",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 7.5,
+            "operational": 54.5,
+            "market": 41.0,
+            "customer": 78.25
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      },
+      {
+        "company_id": "player_company",
+        "company_name": "Player Company",
+        "score": 78.25,
+        "rank": 1,
+        "criteria": "customer",
+        "achieved_at": "2025-11-01T02:17:11.578148",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 7.5,
+            "operational": 54.5,
+            "market": 41.0,
+            "customer": 78.25
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      },
+      {
+        "company_id": "player_company",
+        "company_name": "Player Company",
+        "score": 78.25,
+        "rank": 1,
+        "criteria": "customer",
+        "achieved_at": "2025-11-01T02:17:11.593935",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 7.5,
+            "operational": 51.5,
+            "market": 37.0,
+            "customer": 78.25
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      },
+      {
+        "company_id": "player_company",
+        "company_name": "Player Company",
+        "score": 78.25,
+        "rank": 1,
+        "criteria": "customer",
+        "achieved_at": "2025-11-01T02:17:11.614131",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 7.5,
+            "operational": 54.5,
+            "market": 41.0,
+            "customer": 78.25
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      },
+      {
+        "company_id": "player_company",
+        "company_name": "Player Company",
+        "score": 78.25,
+        "rank": 1,
+        "criteria": "customer",
+        "achieved_at": "2025-11-01T02:17:11.635270",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 7.5,
+            "operational": 54.5,
+            "market": 41.0,
+            "customer": 78.25
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      },
+      {
+        "company_id": "test_company",
+        "company_name": "Test Company",
+        "score": 63.2,
+        "rank": 1,
+        "criteria": "customer",
+        "achieved_at": "2025-11-01T02:09:07.012101",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 16.25,
+            "operational": 59.2,
+            "market": 41.0,
+            "customer": 63.2
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      },
+      {
+        "company_id": "test_company",
+        "company_name": "Test Company",
+        "score": 63.2,
+        "rank": 1,
+        "criteria": "customer",
+        "achieved_at": "2025-11-01T02:13:24.374443",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 16.25,
+            "operational": 59.2,
+            "market": 41.0,
+            "customer": 63.2
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      },
+      {
+        "company_id": "player_company",
+        "company_name": "Player Company",
+        "score": 63.2,
+        "rank": 1,
+        "criteria": "customer",
+        "achieved_at": "2025-11-01T02:16:49.255966",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 16.25,
+            "operational": 59.2,
+            "market": 41.0,
+            "customer": 63.2
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      },
+      {
+        "company_id": "test_company",
+        "company_name": "Test Company",
+        "score": 59.2,
+        "rank": 1,
+        "criteria": "operational",
+        "achieved_at": "2025-11-01T02:09:07.006487",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 16.25,
+            "operational": 59.2,
+            "market": 41.0,
+            "customer": 63.2
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      },
+      {
+        "company_id": "test_company",
+        "company_name": "Test Company",
+        "score": 59.2,
+        "rank": 1,
+        "criteria": "operational",
+        "achieved_at": "2025-11-01T02:13:24.366626",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 16.25,
+            "operational": 59.2,
+            "market": 41.0,
+            "customer": 63.2
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      }
+    ]
+  },
+  "historical_data": [],
+  "last_updated": "2025-11-01T02:17:11.635654"
+}

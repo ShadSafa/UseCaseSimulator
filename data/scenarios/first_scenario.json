@@ -1,0 +1,32 @@
+{
+  "name": "First Scenario",
+  "description": "This is a scenario",
+  "difficulty": "medium",
+  "max_rounds": 10,
+  "initial_setup": {
+    "cash": 50000,
+    "revenue": 100000,
+    "market_share": 15,
+    "employees": 100
+  },
+  "market_conditions": {
+    "demand_level": "medium",
+    "competition_intensity": "medium",
+    "economic_conditions": "slow_growth",
+    "seasonal_effects": "none"
+  },
+  "constraints": {
+    "limit_pricing": true,
+    "limit_marketing": true,
+    "limit_hiring": true,
+    "require_balance": true
+  },
+  "learning_objectives": {
+    "pricing_strategy": true,
+    "marketing_allocation": true,
+    "operational_efficiency": true,
+    "strategic_thinking": false,
+    "risk_management": false
+  },
+  "version": "1.0"
+}

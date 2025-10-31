@@ -236,6 +236,7 @@ class KPICalculator:
 
         latest = self.kpi_history[-1]
 
+        calculated_at = latest.calculated_at.isoformat() if latest.calculated_at else None
         return {
             'total_kpis_calculated': len(latest.financial_kpis) + len(latest.operational_kpis) +
                                    len(latest.market_kpis) + len(latest.customer_kpis),
@@ -243,7 +244,7 @@ class KPICalculator:
             'operational_kpi_count': len(latest.operational_kpis),
             'market_kpi_count': len(latest.market_kpis),
             'customer_kpi_count': len(latest.customer_kpis),
-            'last_calculated': latest.calculated_at.isoformat(),
+            'last_calculated': calculated_at,
             'history_length': len(self.kpi_history)
         }
 

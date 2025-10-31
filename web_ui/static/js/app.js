@@ -361,10 +361,10 @@ class UI {
 
         flashContainer.appendChild(flashMessage);
 
-        // Auto-remove after 5 seconds
+        // Auto-remove after 2 seconds
         setTimeout(() => {
             flashMessage.remove();
-        }, 5000);
+        }, 2000);
     }
 
     updateDashboard(gameState) {

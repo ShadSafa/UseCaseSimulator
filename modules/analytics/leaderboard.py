@@ -445,7 +445,7 @@ class Leaderboard:
                         'rank': e.rank,
                         'company_name': e.company_name,
                         'score': e.score,
-                        'achieved_at': e.achieved_at.isoformat()
+                        'achieved_at': e.achieved_at.isoformat() if e.achieved_at else None
                     } for e in entries
                 ]
             }

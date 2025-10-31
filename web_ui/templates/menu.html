@@ -5,6 +5,12 @@
 {% block content %}
 <div class="menu-container">
     <div class="hero-section">
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
+                 alt="Students collaborating on business project"
+                 class="hero-bg-image">
+            <div class="hero-overlay"></div>
+        </div>
         <div class="hero-content">
             <h1 class="hero-title">Use Case Simulator</h1>
             <p class="hero-subtitle">Master business strategy through interactive simulation</p>
@@ -17,11 +23,11 @@
                     <span class="btn-icon">📁</span>
                     Load Simulation
                 </a>
+                <a href="{{ url_for('main.scenario_designer') }}" class="btn btn-outline btn-large">
+                    <span class="btn-icon">🎨</span>
+                    Design Scenario
+                </a>
             </div>
-        </div>
-        <div class="hero-visual">
-            <div class="hero-glow"></div>
-            <div class="hero-particles"></div>
         </div>
     </div>
 
@@ -55,7 +61,7 @@
             <div class="feature-card">
                 <div class="feature-icon">💾</div>
                 <h3>Save & Load</h3>
-                <p>Save progress and resume games anytime</p>
+                <p>Save progress and resume simulations anytime</p>
             </div>
 
             <div class="feature-card">
@@ -79,7 +85,7 @@
             </div>
             <div class="stat-item">
                 <span class="stat-number">10+</span>
-                <span class="stat-label">Rounds per Game</span>
+                <span class="stat-label">Rounds per Simulation</span>
             </div>
             <div class="stat-item">
                 <span class="stat-number">∞</span>
@@ -89,9 +95,7 @@
     </div>
 
     <div class="menu-footer">
-        <a href="{{ url_for('main.help') }}" class="link-primary">Need Help?</a>
-        <span class="separator">•</span>
-        <a href="{{ url_for('main.about') }}" class="link-primary">About the Game</a>
+        <p class="footer-text">Ready to start your business simulation journey?</p>
     </div>
 </div>
 {% endblock %}

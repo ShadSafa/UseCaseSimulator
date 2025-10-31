@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Use Case Simulator{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <h1>Simulation Dashboard</h1>
+        <p class="text-center mb-4">Welcome to your business simulation control center</p>
+
+        <div class="grid grid-2 mt-4">
+            <div class="card">
+                <h3>Company Overview</h3>
+                <div class="stat-item">
+                    <div class="stat-number">{{ "%.1f"|format(game_state.player_company.financial_data.revenue / 1000) }}K</div>
+                    <div class="stat-label">Revenue</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">{{ "%.1f"|format(game_state.player_company.financial_data.profit / 1000) }}K</div>
+                    <div class="stat-label">Profit</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">{{ "%.1f"|format(game_state.player_company.market_data.market_share * 100) }}%</div>
+                    <div class="stat-label">Market Share</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Round Information</h3>
+                <div class="stat-item">
+                    <div class="stat-number">{{ game_state.round_number }}</div>
+                    <div class="stat-label">Current Round</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">{{ game_state.player_company.operations_data.capacity|int }}</div>
+                    <div class="stat-label">Capacity</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">{{ game_state.player_company.resource_data.employees }}</div>
+                    <div class="stat-label">Employees</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ url_for('game.decision_phase') }}" class="btn btn-primary btn-large">
+                <span class="btn-icon">🎯</span>
+                Make Decisions
+            </a>
+            <a href="{{ url_for('main.analytics') }}" class="btn btn-secondary btn-large">
+                <span class="btn-icon">📊</span>
+                View Analytics
+            </a>
+        </div>
+
+        <div class="text-center mt-3">
+            <form action="{{ url_for('game.quit_game') }}" method="post" style="display: inline;">
+                <button type="submit" class="btn btn-secondary" onclick="return confirm('Are you sure you want to end this simulation?')">
+                    <span class="btn-icon">🚪</span>
+                    End Simulation
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

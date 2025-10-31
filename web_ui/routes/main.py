@@ -114,6 +114,12 @@ def analytics():
     return render_template('analytics.html', game_state=game_state)
 
 
+@main_bp.route('/scenario-designer')
+def scenario_designer():
+    """Scenario designer page for instructors."""
+    return render_template('scenario_designer.html')
+
+
 @main_bp.route('/settings')
 def settings():
     """Settings page."""

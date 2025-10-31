@@ -1,0 +1,375 @@
+{
+  "config": {
+    "max_rounds": 10,
+    "num_competitors": 3,
+    "initial_market_demand": 1000.0,
+    "market_volatility": 0.1,
+    "event_frequency": 0.3
+  },
+  "current_state": {
+    "round_number": 0,
+    "player_company": {
+      "id": "player_company",
+      "name": "Player Company",
+      "financial_data": {
+        "revenue": 100000.0,
+        "costs": 80000.0,
+        "profit": 20000.0,
+        "cash_flow": 0.0,
+        "assets": 200000.0,
+        "liabilities": 150000.0,
+        "cash": 50000.0
+      },
+      "operations_data": {
+        "capacity": 1000.0,
+        "efficiency": 0.8,
+        "quality": 0.75,
+        "customer_satisfaction": 0.7,
+        "utilization": 0.0
+      },
+      "resource_data": {
+        "employees": 100,
+        "equipment": 100000.0,
+        "inventory": 50000.0
+      },
+      "market_data": {
+        "market_share": 0.15,
+        "brand_value": 50.0,
+        "competitive_position": 0.5
+      },
+      "decision_history": [],
+      "performance_history": []
+    },
+    "market": {
+      "config": {
+        "initial_demand": 1000.0,
+        "initial_price_index": 1.0,
+        "competition_intensity": 0.5,
+        "base_price": 100.0,
+        "num_competitors": 3,
+        "price_elasticity": -1.5
+      },
+      "state": {
+        "demand_level": 1000.0,
+        "price_index": 1.0,
+        "competition_intensity": 0.5,
+        "economic_indicators": {
+          "gdp_growth": 0.02,
+          "inflation": 0.03,
+          "interest_rate": 0.05
+        },
+        "active_events": [],
+        "trend_factors": {
+          "seasonal": 0.0,
+          "trend": 0.0,
+          "cyclical": 0.0
+        }
+      },
+      "round_number": 0,
+      "competitors": [
+        {
+          "id": "competitor_1",
+          "name": "Competitor Company 1",
+          "strategy": "Cost_Leader",
+          "aggressiveness": 0.7157179032078,
+          "price_sensitivity": 0.830491238047799,
+          "innovation_focus": 0.2331501302800466,
+          "market_share": 0.08333333333333333,
+          "price": 100.0,
+          "quality": 0.7856448044546932,
+          "last_decision": null
+        },
+        {
+          "id": "competitor_2",
+          "name": "Competitor Company 2",
+          "strategy": "Quality_Focused",
+          "aggressiveness": 0.5955403859983626,
+          "price_sensitivity": 0.6520895707507411,
+          "innovation_focus": 0.8466526724783989,
+          "market_share": 0.08333333333333333,
+          "price": 100.0,
+          "quality": 0.7113487364812905,
+          "last_decision": null
+        },
+        {
+          "id": "competitor_3",
+          "name": "Competitor Company 3",
+          "strategy": "Balanced",
+          "aggressiveness": 0.6560118653543463,
+          "price_sensitivity": 0.7102178823812363,
+          "innovation_focus": 0.4608340623073297,
+          "market_share": 0.08333333333333333,
+          "price": 100.0,
+          "quality": 0.6662057427503428,
+          "last_decision": null
+        }
+      ],
+      "trend_history": []
+    },
+    "competitors": [
+      {
+        "id": "competitor_1",
+        "name": "Competitor Company 1",
+        "market_share": 0.08333333333333333,
+        "aggressiveness": 0.5,
+        "financials": {
+          "revenue": 80000.0,
+          "profit": 15000.0
+        }
+      },
+      {
+        "id": "competitor_2",
+        "name": "Competitor Company 2",
+        "market_share": 0.08333333333333333,
+        "aggressiveness": 0.6,
+        "financials": {
+          "revenue": 90000.0,
+          "profit": 17000.0
+        }
+      },
+      {
+        "id": "competitor_3",
+        "name": "Competitor Company 3",
+        "market_share": 0.08333333333333333,
+        "aggressiveness": 0.7,
+        "financials": {
+          "revenue": 100000.0,
+          "profit": 19000.0
+        }
+      }
+    ],
+    "events": [],
+    "kpis": {
+      "revenue": 100000.0,
+      "profit_margin": 0.2,
+      "market_share": 0.15,
+      "roi": 0.1,
+      "customer_satisfaction": 0.7,
+      "operational_efficiency": 0.8,
+      "capacity_utilization": 0.0,
+      "brand_value": 50.0
+    },
+    "timestamp": "2025-11-01T02:13:25.065451"
+  },
+  "round_manager": {
+    "current_round": 0,
+    "max_rounds": 10
+  },
+  "event_manager": {
+    "active_events": [],
+    "event_history": []
+  },
+  "market": {
+    "config": {
+      "initial_demand": 1000.0,
+      "initial_price_index": 1.0,
+      "competition_intensity": 0.5,
+      "base_price": 100.0,
+      "num_competitors": 3,
+      "price_elasticity": -1.5
+    },
+    "state": {
+      "demand_level": 1000.0,
+      "price_index": 1.0,
+      "competition_intensity": 0.5,
+      "economic_indicators": {
+        "gdp_growth": 0.02,
+        "inflation": 0.03,
+        "interest_rate": 0.05
+      },
+      "active_events": [],
+      "trend_factors": {
+        "seasonal": 0.0,
+        "trend": 0.0,
+        "cyclical": 0.0
+      }
+    },
+    "round_number": 0,
+    "competitors": [
+      {
+        "id": "competitor_1",
+        "name": "Competitor Company 1",
+        "strategy": "Cost_Leader",
+        "aggressiveness": 0.7157179032078,
+        "price_sensitivity": 0.830491238047799,
+        "innovation_focus": 0.2331501302800466,
+        "market_share": 0.08333333333333333,
+        "price": 100.0,
+        "quality": 0.7856448044546932,
+        "last_decision": null
+      },
+      {
+        "id": "competitor_2",
+        "name": "Competitor Company 2",
+        "strategy": "Quality_Focused",
+        "aggressiveness": 0.5955403859983626,
+        "price_sensitivity": 0.6520895707507411,
+        "innovation_focus": 0.8466526724783989,
+        "market_share": 0.08333333333333333,
+        "price": 100.0,
+        "quality": 0.7113487364812905,
+        "last_decision": null
+      },
+      {
+        "id": "competitor_3",
+        "name": "Competitor Company 3",
+        "strategy": "Balanced",
+        "aggressiveness": 0.6560118653543463,
+        "price_sensitivity": 0.7102178823812363,
+        "innovation_focus": 0.4608340623073297,
+        "market_share": 0.08333333333333333,
+        "price": 100.0,
+        "quality": 0.6662057427503428,
+        "last_decision": null
+      }
+    ],
+    "trend_history": []
+  },
+  "simulation_history": [
+    {
+      "round_number": 0,
+      "player_company": {
+        "id": "player_company",
+        "name": "Player Company",
+        "financial_data": {
+          "revenue": 100000.0,
+          "costs": 80000.0,
+          "profit": 20000.0,
+          "cash_flow": 0.0,
+          "assets": 200000.0,
+          "liabilities": 150000.0,
+          "cash": 50000.0
+        },
+        "operations_data": {
+          "capacity": 1000.0,
+          "efficiency": 0.8,
+          "quality": 0.75,
+          "customer_satisfaction": 0.7,
+          "utilization": 0.0
+        },
+        "resource_data": {
+          "employees": 100,
+          "equipment": 100000.0,
+          "inventory": 50000.0
+        },
+        "market_data": {
+          "market_share": 0.15,
+          "brand_value": 50.0,
+          "competitive_position": 0.5
+        },
+        "decision_history": [],
+        "performance_history": []
+      },
+      "market": {
+        "config": {
+          "initial_demand": 1000.0,
+          "initial_price_index": 1.0,
+          "competition_intensity": 0.5,
+          "base_price": 100.0,
+          "num_competitors": 3,
+          "price_elasticity": -1.5
+        },
+        "state": {
+          "demand_level": 1000.0,
+          "price_index": 1.0,
+          "competition_intensity": 0.5,
+          "economic_indicators": {
+            "gdp_growth": 0.02,
+            "inflation": 0.03,
+            "interest_rate": 0.05
+          },
+          "active_events": [],
+          "trend_factors": {
+            "seasonal": 0.0,
+            "trend": 0.0,
+            "cyclical": 0.0
+          }
+        },
+        "round_number": 0,
+        "competitors": [
+          {
+            "id": "competitor_1",
+            "name": "Competitor Company 1",
+            "strategy": "Cost_Leader",
+            "aggressiveness": 0.7157179032078,
+            "price_sensitivity": 0.830491238047799,
+            "innovation_focus": 0.2331501302800466,
+            "market_share": 0.08333333333333333,
+            "price": 100.0,
+            "quality": 0.7856448044546932,
+            "last_decision": null
+          },
+          {
+            "id": "competitor_2",
+            "name": "Competitor Company 2",
+            "strategy": "Quality_Focused",
+            "aggressiveness": 0.5955403859983626,
+            "price_sensitivity": 0.6520895707507411,
+            "innovation_focus": 0.8466526724783989,
+            "market_share": 0.08333333333333333,
+            "price": 100.0,
+            "quality": 0.7113487364812905,
+            "last_decision": null
+          },
+          {
+            "id": "competitor_3",
+            "name": "Competitor Company 3",
+            "strategy": "Balanced",
+            "aggressiveness": 0.6560118653543463,
+            "price_sensitivity": 0.7102178823812363,
+            "innovation_focus": 0.4608340623073297,
+            "market_share": 0.08333333333333333,
+            "price": 100.0,
+            "quality": 0.6662057427503428,
+            "last_decision": null
+          }
+        ],
+        "trend_history": []
+      },
+      "competitors": [
+        {
+          "id": "competitor_1",
+          "name": "Competitor Company 1",
+          "market_share": 0.08333333333333333,
+          "aggressiveness": 0.5,
+          "financials": {
+            "revenue": 80000.0,
+            "profit": 15000.0
+          }
+        },
+        {
+          "id": "competitor_2",
+          "name": "Competitor Company 2",
+          "market_share": 0.08333333333333333,
+          "aggressiveness": 0.6,
+          "financials": {
+            "revenue": 90000.0,
+            "profit": 17000.0
+          }
+        },
+        {
+          "id": "competitor_3",
+          "name": "Competitor Company 3",
+          "market_share": 0.08333333333333333,
+          "aggressiveness": 0.7,
+          "financials": {
+            "revenue": 100000.0,
+            "profit": 19000.0
+          }
+        }
+      ],
+      "events": [],
+      "kpis": {
+        "revenue": 100000.0,
+        "profit_margin": 0.2,
+        "market_share": 0.15,
+        "roi": 0.1,
+        "customer_satisfaction": 0.7,
+        "operational_efficiency": 0.8,
+        "capacity_utilization": 0.0,
+        "brand_value": 50.0
+      },
+      "timestamp": "2025-11-01T02:13:25.065451"
+    }
+  ]
+}

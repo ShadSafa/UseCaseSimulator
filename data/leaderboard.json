@@ -1,0 +1,116 @@
+{
+  "leaderboards": {
+    "overall": [
+      {
+        "company_id": "test_company",
+        "company_name": "Test Company",
+        "score": 42.565,
+        "rank": 1,
+        "criteria": "overall",
+        "achieved_at": "2025-11-01T02:13:24.268056",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 16.25,
+            "operational": 59.2,
+            "market": 41.0,
+            "customer": 63.2
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      }
+    ],
+    "financial": [],
+    "operational": [],
+    "market": [],
+    "customer": [],
+    "weekly": [
+      {
+        "company_id": "test_company",
+        "company_name": "Test Company",
+        "score": 42.565,
+        "rank": 1,
+        "criteria": "overall",
+        "achieved_at": "2025-11-01T02:09:06.892552",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 16.25,
+            "operational": 59.2,
+            "market": 41.0,
+            "customer": 63.2
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      },
+      {
+        "company_id": "test_company",
+        "company_name": "Test Company",
+        "score": 42.565,
+        "rank": 1,
+        "criteria": "overall",
+        "achieved_at": "2025-11-01T02:13:24.268056",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 16.25,
+            "operational": 59.2,
+            "market": 41.0,
+            "customer": 63.2
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      }
+    ],
+    "monthly": [
+      {
+        "company_id": "test_company",
+        "company_name": "Test Company",
+        "score": 42.565,
+        "rank": 1,
+        "criteria": "overall",
+        "achieved_at": "2025-11-01T02:09:06.892552",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 16.25,
+            "operational": 59.2,
+            "market": 41.0,
+            "customer": 63.2
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      },
+      {
+        "company_id": "test_company",
+        "company_name": "Test Company",
+        "score": 42.565,
+        "rank": 1,
+        "criteria": "overall",
+        "achieved_at": "2025-11-01T02:13:24.268056",
+        "metadata": {
+          "criteria_scores": {
+            "financial": 16.25,
+            "operational": 59.2,
+            "market": 41.0,
+            "customer": 63.2
+          },
+          "percentile": 100.0,
+          "trend": "stable",
+          "week": "2025-43",
+          "month": "2025-11"
+        }
+      }
+    ]
+  },
+  "historical_data": [],
+  "last_updated": "2025-11-01T02:13:24.268480"
+}

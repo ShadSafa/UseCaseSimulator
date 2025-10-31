@@ -1,0 +1,253 @@
+{% extends "base.html" %}
+
+{% block title %}Make Decisions - Use Case Simulator{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <h1>Round {{ game_state.round_number }} Decisions</h1>
+        <p class="text-center mb-4">Make strategic decisions to guide your company's growth</p>
+
+        <form action="{{ url_for('game.process_decision') }}" method="post" class="form" data-action="decisions">
+            <div class="decisions-grid">
+                <!-- Pricing Decision -->
+                <div class="decision-card">
+                    <div class="decision-header">
+                        <h3>💰 Pricing Strategy</h3>
+                        <p>Set your product pricing to influence demand and profitability</p>
+                    </div>
+                    <div class="decision-input">
+                        <label for="pricing" class="form-label">Price per Unit ($)</label>
+                        <input type="number" id="pricing" name="pricing"
+                               class="form-input" placeholder="100.00"
+                               min="10" max="500" step="5" value="100">
+                        <div class="input-help">Current market price: ~$100</div>
+                    </div>
+                </div>
+
+                <!-- Marketing Budget -->
+                <div class="decision-card">
+                    <div class="decision-header">
+                        <h3>📢 Marketing Campaign</h3>
+                        <p>Invest in marketing to increase brand awareness and market share</p>
+                    </div>
+                    <div class="decision-input">
+                        <label for="marketing" class="form-label">Marketing Budget ($)</label>
+                        <input type="number" id="marketing" name="marketing"
+                               class="form-input" placeholder="0"
+                               min="0" max="50000" step="1000" value="0">
+                        <div class="input-help">Budget range: $0 - $50,000</div>
+                    </div>
+                </div>
+
+                <!-- Capacity Expansion -->
+                <div class="decision-card">
+                    <div class="decision-header">
+                        <h3>🏭 Capacity Expansion</h3>
+                        <p>Expand production capacity to meet growing demand</p>
+                    </div>
+                    <div class="decision-input">
+                        <label for="capacity_expansion" class="form-label">Additional Capacity</label>
+                        <input type="number" id="capacity_expansion" name="capacity_expansion"
+                               class="form-input" placeholder="0"
+                               min="0" max="1000" step="50" value="0">
+                        <div class="input-help">Current capacity: {{ "%.0f"|format(game_state.player_company.operations_data.capacity) }}</div>
+                    </div>
+                </div>
+
+                <!-- Quality Improvement -->
+                <div class="decision-card">
+                    <div class="decision-header">
+                        <h3>⭐ Quality Improvement</h3>
+                        <p>Invest in quality improvements to increase customer satisfaction</p>
+                    </div>
+                    <div class="decision-input">
+                        <label for="quality_improvement" class="form-label">Quality Investment ($)</label>
+                        <input type="number" id="quality_improvement" name="quality_improvement"
+                               class="form-input" placeholder="0"
+                               min="0" max="25000" step="1000" value="0">
+                        <div class="input-help">Current quality: {{ "%.1f"|format(game_state.player_company.operations_data.quality * 100) }}%</div>
+                    </div>
+                </div>
+
+                <!-- Hiring -->
+                <div class="decision-card">
+                    <div class="decision-header">
+                        <h3>👥 Hire Employees</h3>
+                        <p>Expand your workforce to improve operational efficiency</p>
+                    </div>
+                    <div class="decision-input">
+                        <label for="hiring" class="form-label">Number of New Employees</label>
+                        <input type="number" id="hiring" name="hiring"
+                               class="form-input" placeholder="0"
+                               min="0" max="50" step="1" value="0">
+                        <div class="input-help">Current employees: {{ game_state.player_company.resource_data.employees }}</div>
+                    </div>
+                </div>
+
+                <!-- Equipment Purchase -->
+                <div class="decision-card">
+                    <div class="decision-header">
+                        <h3>⚙️ Equipment Investment</h3>
+                        <p>Purchase new equipment to enhance production capabilities</p>
+                    </div>
+                    <div class="decision-input">
+                        <label for="equipment_purchase" class="form-label">Equipment Value ($)</label>
+                        <input type="number" id="equipment_purchase" name="equipment_purchase"
+                               class="form-input" placeholder="0"
+                               min="0" max="100000" step="5000" value="0">
+                        <div class="input-help">Current equipment value: ${{ "%.0f"|format(game_state.player_company.resource_data.equipment / 1000) }}K</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current Company Status -->
+            <div class="status-summary">
+                <h3>Current Company Status</h3>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <span class="status-label">Cash Available:</span>
+                        <span class="status-value">${{ "%.1f"|format(game_state.player_company.financial_data.cash / 1000) }}K</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Market Share:</span>
+                        <span class="status-value">{{ "%.1f"|format(game_state.player_company.market_data.market_share * 100) }}%</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Capacity Utilization:</span>
+                        <span class="status-value">{{ "%.1f"|format(game_state.player_company.operations_data.utilization * 100) }}%</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Customer Satisfaction:</span>
+                        <span class="status-value">{{ "%.1f"|format(game_state.player_company.operations_data.customer_satisfaction * 100) }}%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary btn-large">
+                    <span class="btn-icon">▶️</span>
+                    Execute Round {{ game_state.round_number }}
+                </button>
+                <br>
+                <a href="{{ url_for('main.dashboard') }}" class="link-primary mt-3 d-block">Back to Dashboard</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+.decisions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.decision-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    transition: all 0.3s ease;
+}
+
+.decision-card:hover {
+    border-color: var(--cyan-blue);
+    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.1);
+}
+
+.decision-header h3 {
+    margin: 0 0 var(--spacing-sm) 0;
+    color: var(--primary-text);
+    font-size: 1.1rem;
+}
+
+.decision-header p {
+    margin: 0 0 var(--spacing-lg) 0;
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+}
+
+.decision-input {
+    margin-top: var(--spacing-lg);
+}
+
+.input-help {
+    font-size: 0.8rem;
+    color: var(--secondary-text);
+    margin-top: var(--spacing-xs);
+}
+
+.status-summary {
+    background: rgba(0, 212, 255, 0.05);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.status-summary h3 {
+    margin: 0 0 var(--spacing-lg) 0;
+    color: var(--primary-text);
+}
+
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm);
+    background: var(--card-bg);
+    border-radius: var(--radius-sm);
+}
+
+.status-label {
+    font-weight: 500;
+    color: var(--secondary-text);
+}
+
+.status-value {
+    font-weight: 700;
+    color: var(--cyan-blue);
+}
+
+@media (max-width: 768px) {
+    .decisions-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .status-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<script>
+// Auto-format number inputs
+document.querySelectorAll('input[type="number"]').forEach(input => {
+    input.addEventListener('blur', function() {
+        if (this.value && !isNaN(this.value)) {
+            this.value = parseFloat(this.value).toFixed(this.step.includes('.') ? 2 : 0);
+        }
+    });
+});
+
+// Add visual feedback for decision changes
+document.querySelectorAll('input').forEach(input => {
+    input.addEventListener('input', function() {
+        if (this.value !== this.defaultValue) {
+            this.style.borderColor = 'var(--cyan-blue)';
+        } else {
+            this.style.borderColor = 'var(--border-color)';
+        }
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+
+{% block title %}Analytics Dashboard - Use Case Simulator{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <h1>Analytics Dashboard</h1>
+        <p class="text-center mb-4">Comprehensive performance analytics and insights</p>
+
+        <div class="analytics-tabs">
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="showTab('kpis')">KPIs</button>
+                <button class="tab-btn" onclick="showTab('charts')">Charts</button>
+                <button class="tab-btn" onclick="showTab('rankings')">Rankings</button>
+                <button class="tab-btn" onclick="showTab('reports')">Reports</button>
+            </div>
+
+            <div id="kpis-tab" class="tab-content active">
+                <h3>Key Performance Indicators</h3>
+                <div class="grid grid-2 mt-3">
+                    <div class="card">
+                        <h4>Financial KPIs</h4>
+                        <div class="kpi-grid">
+                            <div class="kpi-item">
+                                <span class="kpi-label">Revenue</span>
+                                <span class="kpi-value">${{ "%.1f"|format(game_state.player_company.financial_data.revenue / 1000) }}K</span>
+                            </div>
+                            <div class="kpi-item">
+                                <span class="kpi-label">Profit Margin</span>
+                                <span class="kpi-value">{{ "%.1f"|format(game_state.player_company.financial_data.profit / game_state.player_company.financial_data.revenue * 100 if game_state.player_company.financial_data.revenue > 0 else 0) }}%</span>
+                            </div>
+                            <div class="kpi-item">
+                                <span class="kpi-label">ROI</span>
+                                <span class="kpi-value">{{ "%.1f"|format(game_state.player_company.financial_data.profit / game_state.player_company.financial_data.assets * 100 if game_state.player_company.financial_data.assets > 0 else 0) }}%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h4>Operational KPIs</h4>
+                        <div class="kpi-grid">
+                            <div class="kpi-item">
+                                <span class="kpi-label">Capacity Utilization</span>
+                                <span class="kpi-value">{{ "%.1f"|format(game_state.player_company.operations_data.utilization * 100) }}%</span>
+                            </div>
+                            <div class="kpi-item">
+                                <span class="kpi-label">Efficiency</span>
+                                <span class="kpi-value">{{ "%.1f"|format(game_state.player_company.operations_data.efficiency * 100) }}%</span>
+                            </div>
+                            <div class="kpi-item">
+                                <span class="kpi-label">Quality</span>
+                                <span class="kpi-value">{{ "%.1f"|format(game_state.player_company.operations_data.quality * 100) }}%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="charts-tab" class="tab-content">
+                <h3>Performance Charts</h3>
+                <div class="text-center mt-4">
+                    <p>Charts will be displayed here once more simulation rounds are completed.</p>
+                    <div class="chart-placeholder">
+                        <div class="chart-icon">📊</div>
+                        <p>Complete more rounds to see trend analysis</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="rankings-tab" class="tab-content">
+                <h3>Company Rankings</h3>
+                <div class="text-center mt-4">
+                    <p>Ranking data will be available once competitors are implemented.</p>
+                    <div class="ranking-placeholder">
+                        <div class="ranking-icon">🏆</div>
+                        <p>Multi-company rankings coming soon</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="reports-tab" class="tab-content">
+                <h3>Simulation Reports</h3>
+                <div class="text-center mt-4">
+                    <p>Generate comprehensive reports of your simulation performance.</p>
+                    <div class="report-actions">
+                        <button class="btn btn-primary" onclick="generateReport('summary')">
+                            <span class="btn-icon">📄</span>
+                            Generate Summary Report
+                        </button>
+                        <button class="btn btn-secondary" onclick="generateReport('detailed')">
+                            <span class="btn-icon">📊</span>
+                            Generate Detailed Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function showTab(tabName) {
+    // Hide all tabs
+    document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+    });
+
+    // Remove active class from all buttons
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    // Show selected tab
+    document.getElementById(tabName + '-tab').classList.add('active');
+
+    // Add active class to clicked button
+    event.target.classList.add('active');
+}
+
+function generateReport(type) {
+    // Show loading state
+    const button = event.target;
+    const originalText = button.innerHTML;
+    button.innerHTML = '<div class="spinner"></div> Generating...';
+    button.disabled = true;
+
+    // Simulate report generation (replace with actual API call)
+    setTimeout(() => {
+        button.innerHTML = originalText;
+        button.disabled = false;
+
+        // Show success message
+        const message = `✅ ${type.charAt(0).toUpperCase() + type.slice(1)} report generated successfully!`;
+        showFlashMessage(message, 'success');
+
+        // In a real implementation, this would download the report
+        console.log(`${type} report would be downloaded here`);
+    }, 2000);
+}
+
+function showFlashMessage(message, type = 'info') {
+    const flashContainer = document.getElementById('flash-messages');
+    if (!flashContainer) return;
+
+    const flashMessage = document.createElement('div');
+    flashMessage.className = `flash-message flash-${type}`;
+    flashMessage.textContent = message;
+
+    flashContainer.appendChild(flashMessage);
+
+    // Auto-remove after 2 seconds
+    setTimeout(() => {
+        flashMessage.remove();
+    }, 2000);
+}
+</script>
+
+<style>
+.analytics-tabs {
+    margin-top: var(--spacing-xl);
+}
+
+.tab-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: var(--spacing-md);
+}
+
+.tab-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-color);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+    background: var(--hover-bg);
+    border-color: var(--cyan-blue);
+}
+
+.tab-btn.active {
+    background: var(--cyan-blue);
+    color: white;
+    border-color: var(--cyan-blue);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.kpi-grid {
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+.kpi-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm);
+    background: rgba(0, 212, 255, 0.05);
+    border-radius: var(--radius-sm);
+}
+
+.kpi-label {
+    font-weight: 500;
+    color: var(--secondary-text);
+}
+
+.kpi-value {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--cyan-blue);
+}
+
+.chart-placeholder,
+.ranking-placeholder {
+    padding: var(--spacing-2xl);
+    text-align: center;
+    color: var(--secondary-text);
+}
+
+.chart-icon,
+.ranking-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+    opacity: 0.5;
+}
+
+.report-actions {
+    display: flex;
+    gap: var(--spacing-lg);
+    justify-content: center;
+    margin-top: var(--spacing-xl);
+}
+</style>
+{% endblock %}

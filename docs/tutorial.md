@@ -1,382 +1,263 @@
 # Use Case Simulator Tutorial
 
-Welcome to the Use Case Simulator! This interactive business simulation game teaches strategic decision-making through hands-on experience managing a company in a dynamic market environment.
+## Welcome to Business Strategy Simulation! 🎯
+
+This tutorial will guide you through your first business simulation experience. You'll learn how to make strategic decisions, analyze performance, and compete in a dynamic market environment.
+
+---
 
 ## Table of Contents
-
 1. [Getting Started](#getting-started)
-2. [Understanding the Game](#understanding-the-game)
-3. [Making Decisions](#making-decisions)
-4. [Monitoring Performance](#monitoring-performance)
-5. [Advanced Features](#advanced-features)
-6. [Tips for Success](#tips-for-success)
-7. [Troubleshooting](#troubleshooting)
+2. [Understanding Your Company](#understanding-your-company)
+3. [Making Business Decisions](#making-business-decisions)
+4. [Reading Performance Metrics](#reading-performance-metrics)
+5. [Market Analysis](#market-analysis)
+6. [Advanced Strategies](#advanced-strategies)
+7. [Saving and Loading Games](#saving-and-loading-games)
+
+---
 
 ## Getting Started
 
-### Installation
+### Launching the Simulation
 
-1. **Prerequisites**: Python 3.8 or higher
-2. **Install the game**:
+1. **Start the Application:**
    ```bash
-   pip install usecasesimulator
-   ```
-3. **Run the game**:
-   ```bash
-   python -m modules.ui.console_ui
+   python run_web.py
    ```
 
-### First Time Setup
+2. **Open Your Browser:**
+   - Navigate to: `http://localhost:5000`
+   - Click **"New Simulation"** to begin
 
-When you start the game for the first time, you'll be prompted to:
+3. **Choose Your Scenario:**
+   - **Stable Market**: Predictable conditions for learning basics
+   - **Booming Economy**: High growth environment
+   - **Competitive Market**: Intense rivalry
+   - **Economic Recession**: Cost control focus
 
-1. Choose a company name
-2. Select a starting scenario (beginner-friendly options available)
-3. Review the basic controls
+4. **Set Company Details:**
+   - Enter your company name
+   - Select difficulty level
+   - Click **"Start Simulation"**
 
-## Understanding the Game
+---
 
-### Game Objective
+## Understanding Your Company
 
-Your goal is to successfully manage a business over multiple rounds (typically 10-15 rounds) by making strategic decisions that balance:
+### Company Dashboard Overview
 
-- **Financial Performance**: Revenue growth, profitability, cash management
-- **Operational Efficiency**: Capacity utilization, quality control, cost management
-- **Market Position**: Market share, brand value, competitive positioning
-- **Customer Satisfaction**: Service quality, loyalty, retention
+Your company dashboard displays key information in organized sections:
 
-### Key Concepts
-
-#### Company Metrics
-- **Revenue**: Income from sales
-- **Costs**: Operational expenses (fixed + variable)
+#### 📊 Financial Overview
+- **Revenue**: Total income from sales
+- **Costs**: Operating expenses
 - **Profit**: Revenue minus costs
-- **Cash Flow**: Net cash movement
+- **Cash**: Available funds for decisions
+
+#### 🏭 Operations Metrics
+- **Capacity**: Production capability
+- **Efficiency**: Operational performance (0-100%)
+- **Quality**: Product quality rating
+- **Utilization**: Capacity usage percentage
+
+#### 📈 Market Position
 - **Market Share**: Percentage of market controlled
-- **Capacity Utilization**: How efficiently you use production capacity
+- **Brand Value**: Brand strength and recognition
+- **Competitive Position**: Relative standing vs competitors
 
-#### Market Dynamics
-- **Demand**: Customer demand for your products/services
-- **Competition**: Rival companies vying for market share
-- **Economic Conditions**: GDP growth, inflation, interest rates
-- **Events**: Random or scheduled events that impact the business
+---
 
-## Making Decisions
+## Making Business Decisions
 
-### Decision Types
+### Decision Categories
 
-Each round, you can make several types of business decisions:
+Each round, you make strategic decisions across four areas:
 
-#### 1. Pricing Decisions
-```
-Current Price: $100.00
-Market Average: $98.00
-Recommended Range: $90.00 - $110.00
+#### 💰 Pricing Strategy
+- **Price Changes**: Adjust product pricing (±20% limit per round)
+- **Impact**: Higher prices increase margins but may reduce demand
+- **Strategy Tip**: Balance profitability with market share
 
-Enter new price: 105.00
-```
-**Impact**: Affects demand, revenue, and competitive position.
+#### 📢 Marketing Investment
+- **Budget Allocation**: Invest in marketing campaigns
+- **Impact**: Increases brand value and market share
+- **Strategy Tip**: Consistent investment builds long-term advantage
 
-#### 2. Capacity Expansion
-```
-Current Capacity: 1000 units
-Utilization: 85%
-Expansion Cost: $50,000
-Additional Capacity: 200 units
+#### 🏭 Capacity Expansion
+- **Facility Investment**: Increase production capacity
+- **Impact**: Allows serving more customers
+- **Strategy Tip**: Time expansion with demand growth
 
-Invest in expansion? (y/n): y
-```
-**Impact**: Increases production capability but adds fixed costs.
+#### 👥 Hiring & Operations
+- **Workforce Decisions**: Hire employees or improve efficiency
+- **Impact**: Affects operational capacity and costs
+- **Strategy Tip**: Balance headcount with productivity
 
-#### 3. Marketing Campaigns
-```
-Budget Options:
-1. $10,000 (Small campaign)
-2. $25,000 (Medium campaign)
-3. $50,000 (Large campaign)
+### Decision-Making Process
 
-Choose budget level (1-3): 2
-```
-**Impact**: Improves brand value and market share.
+1. **Analyze Current State**: Review KPIs and market conditions
+2. **Set Priorities**: Focus on 2-3 key decisions per round
+3. **Balance Resources**: Don't over-invest in one area
+4. **Click "Submit Decisions"**: Execute your strategy
+5. **Review Results**: Analyze round outcomes
 
-#### 4. Quality Improvements
-```
-Current Quality: 75%
-Improvement Cost: $15,000
-Expected Quality Gain: +5%
+---
 
-Invest in quality? (y/n): y
-```
-**Impact**: Increases customer satisfaction and premium pricing potential.
-
-#### 5. Hiring Decisions
-```
-Current Employees: 100
-Productivity: 85%
-Hiring Cost: $50,000/year
-Additional Employees: 10
-
-Hire new employees? (y/n): y
-```
-**Impact**: Increases operational capacity and efficiency.
-
-### Decision-Making Strategy
-
-1. **Assess Current Situation**: Review KPIs and market conditions
-2. **Prioritize Actions**: Focus on 2-3 key decisions per round
-3. **Balance Trade-offs**: Consider short-term vs. long-term impacts
-4. **Monitor Results**: Track how decisions affect performance
-
-## Monitoring Performance
+## Reading Performance Metrics
 
 ### Key Performance Indicators (KPIs)
 
-The game tracks several KPIs to measure your success:
-
 #### Financial KPIs
-- **Profit Margin**: (Revenue - Costs) / Revenue
-- **Return on Assets**: Profit / Total Assets
-- **Cash Flow Ratio**: Operating Cash Flow / Revenue
-- **Current Ratio**: Cash / Liabilities
+- **Profit Margin**: Profit as % of revenue (>20% = excellent)
+- **Return on Assets**: Profit efficiency (>15% = good)
+- **Cash Flow**: Operating cash generation
+- **Current Ratio**: Liquidity measure (>1.5 = healthy)
 
 #### Operational KPIs
-- **Capacity Utilization**: Actual Production / Maximum Capacity
-- **Operational Efficiency**: Output per unit of input
-- **Quality Index**: Product/service quality score
-- **Employee Productivity**: Revenue per employee
+- **Capacity Utilization**: Efficiency of production (>80% = optimal)
+- **Operational Efficiency**: Process effectiveness (>85% = excellent)
+- **Quality Index**: Product quality rating (>90% = premium)
+- **Cost per Unit**: Production efficiency
 
 #### Market KPIs
-- **Market Share**: Your portion of total market
-- **Brand Value**: Strength of your brand
-- **Competitive Position**: Relative standing vs. competitors
-- **Customer Satisfaction**: How happy customers are
+- **Market Share**: Competitive position (>25% = leader)
+- **Brand Value**: Marketing effectiveness
+- **Customer Satisfaction**: Loyalty measure (>85% = excellent)
+- **Relative Position**: Standing vs competitors
 
-#### Customer KPIs
-- **Satisfaction Score**: Overall customer happiness
-- **Loyalty Index**: Customer retention rate
-- **Retention Probability**: Likelihood customers stay
-- **Recommendation Likelihood**: Word-of-mouth potential
+### KPI Dashboard
 
-### Performance Dashboard
+- **Green ↑**: Improving performance
+- **Yellow →**: Stable performance
+- **Red ↓**: Declining performance
 
-```
-ROUND 5 SUMMARY
-═══════════════════════════════════════════════════════════════
+---
 
-FINANCIAL PERFORMANCE
-Revenue: $125,000 (+8.7%)
-Costs: $98,000 (+2.1%)
-Profit: $27,000 (+25.6%)
-Cash: $45,000 (+15.4%)
+## Market Analysis
 
-OPERATIONAL METRICS
-Capacity Utilization: 87%
-Operational Efficiency: 0.83
-Quality Index: 0.78
-Customer Satisfaction: 0.82
+### Understanding Market Dynamics
 
-MARKET POSITION
-Market Share: 16.5% (+1.2%)
-Brand Value: 52.0 (+4.0%)
-Competitive Position: 0.55 (+0.05)
+#### Demand Factors
+- **Economic Conditions**: GDP growth, inflation rates
+- **Seasonal Effects**: Cyclical demand patterns
+- **Competition Level**: Rival company actions
+- **Price Elasticity**: Demand sensitivity to price changes
 
-COMPETITOR ACTIVITY
-Competitor A: Price cut of 3%
-Competitor B: Capacity expansion
-Competitor C: Marketing campaign
-```
+#### Competitor Analysis
+- **Market Leaders**: High market share companies
+- **Cost Leaders**: Low-price competitors
+- **Quality Focused**: Premium product companies
+- **Balanced Players**: Well-rounded competitors
 
-### Trend Analysis
+### Market Intelligence
 
-Track performance trends over time:
+1. **Competitor Monitoring**: Track rival performance
+2. **Trend Analysis**: Identify market patterns
+3. **Opportunity Recognition**: Spot underserved segments
+4. **Risk Assessment**: Evaluate economic threats
 
-```
-PROFIT TREND (Last 5 Rounds)
-Round 1: $18,000
-Round 2: $21,000
-Round 3: $24,000
-Round 4: $25,000
-Round 5: $27,000
-Trend: ↗️ Improving (+11.1% over 5 rounds)
-```
+---
 
-## Advanced Features
+## Advanced Strategies
 
-### Scenario Selection
+### Long-Term Planning
 
-Choose from different business scenarios:
+#### Growth Strategies
+- **Market Penetration**: Increase share in existing markets
+- **Market Development**: Enter new market segments
+- **Product Development**: Improve offerings
+- **Diversification**: Expand business scope
 
-#### Beginner Scenarios
-- **Stable Market**: Predictable conditions, good for learning basics
-- **Growth Market**: Expanding demand, focus on scaling
+#### Risk Management
+- **Cash Reserves**: Maintain liquidity buffers
+- **Diversified Investments**: Spread risk across decisions
+- **Market Monitoring**: Track economic indicators
+- **Contingency Planning**: Prepare for market changes
 
-#### Intermediate Scenarios
-- **Competitive Market**: High rivalry, strategic positioning required
-- **Technology Disruption**: Innovation and adaptation challenges
+### Competitive Positioning
 
-#### Advanced Scenarios
-- **Economic Recession**: Cost control and survival focus
-- **Global Expansion**: International market dynamics
+#### Cost Leadership
+- Focus on efficiency and low costs
+- Compete on price positioning
+- Maintain operational excellence
 
-### Save/Load System
+#### Differentiation
+- Build strong brand value
+- Invest in quality improvements
+- Create customer loyalty
 
-```
-SAVE/LOAD MENU
-═══════════════
-1. Quick Save
-2. Manual Save
-3. Load Game
-4. Save to File
-5. Load from File
+#### Balanced Approach
+- Maintain efficiency and quality
+- Adapt to market conditions
+- Build sustainable advantages
 
-Choose option (1-5): 1
-Save created: quicksave_20250101_143022.json
-```
+---
 
-**Save Types**:
-- **Quick Save**: Fast automatic saves
-- **Manual Save**: Named saves with descriptions
-- **Auto Save**: Automatic saves every few rounds
+## Saving and Loading Games
 
-### Analytics and Reporting
+### Game Persistence
 
-Access detailed analytics:
+#### Saving Your Progress
+1. **During Gameplay**: Click "Save Game" button
+2. **Enter Save Name**: Choose descriptive filename
+3. **Automatic Saves**: Game saves automatically each round
 
-```
-ANALYTICS MENU
-═══════════════
-1. View KPI Trends
-2. Generate Report
-3. Export Data
-4. Performance Charts
-5. Competitor Analysis
+#### Loading Saved Games
+1. **From Menu**: Click "Load Simulation"
+2. **Select Save File**: Choose from available saves
+3. **Resume Play**: Continue from saved state
 
-Choose option (1-5): 2
-```
+### Save File Management
 
-**Available Reports**:
-- **Financial Report**: Detailed profit/loss analysis
-- **Operational Report**: Efficiency and capacity metrics
-- **Market Report**: Competitive positioning
-- **Comprehensive Report**: All metrics combined
+#### File Locations
+- **Windows**: `data/saves/your_save_name.json`
+- **Automatic Backup**: Previous saves preserved
+- **Export Capability**: Share saves between systems
 
-### Leaderboards and Achievements
+---
 
-Track your performance against others:
+## Learning Objectives
 
-```
-LEADERBOARD - OVERALL PERFORMANCE
-═══════════════════════════════════
-Rank 1: TechVision Corp     Score: 89.5 ⭐
-Rank 2: GlobalTech Inc      Score: 87.2
-Rank 3: InnovateNow Ltd     Score: 85.8
-Rank 4: Your Company        Score: 82.1 (+2.3 from last round)
+By completing this tutorial, you will understand:
 
-ACHIEVEMENTS UNLOCKED
-══════════════════════
-🏆 Profit Master: Achieved 25% profit margin
-💰 Cash Flow King: 5 consecutive positive cash flow rounds
-⚡ Efficiency Expert: Operational efficiency above 90%
-```
+✅ **Business Fundamentals**: Revenue, costs, and profit dynamics
+✅ **Strategic Decision Making**: Balancing competing priorities
+✅ **Market Analysis**: Reading competitive landscapes
+✅ **Performance Measurement**: Using KPIs for evaluation
+✅ **Risk Management**: Maintaining business stability
+✅ **Long-term Planning**: Building sustainable strategies
 
-## Tips for Success
-
-### Early Game Strategy (Rounds 1-3)
-1. **Focus on Basics**: Ensure positive cash flow
-2. **Build Capacity**: Expand gradually to meet demand
-3. **Quality First**: Invest in quality to build customer loyalty
-4. **Conservative Pricing**: Stay competitive but maintain margins
-
-### Mid Game Strategy (Rounds 4-8)
-1. **Scale Operations**: Increase capacity as market grows
-2. **Marketing Investment**: Build brand value for premium positioning
-3. **Efficiency Focus**: Optimize operations to reduce costs
-4. **Monitor Competition**: Respond to competitor actions
-
-### Late Game Strategy (Rounds 9+)
-1. **Sustain Growth**: Balance expansion with profitability
-2. **Risk Management**: Prepare for economic events
-3. **Market Leadership**: Aim for top market share position
-4. **Long-term Planning**: Consider end-game objectives
-
-### General Tips
-- **Balance is Key**: Don't focus on one metric at expense of others
-- **Monitor Trends**: Watch KPI changes over multiple rounds
-- **Learn from Mistakes**: Use save/load to try different strategies
-- **Adapt to Events**: Market events require quick strategic adjustments
-- **Cash Management**: Maintain healthy cash reserves for opportunities
-
-### Common Pitfalls to Avoid
-- **Overexpansion**: Don't expand capacity faster than demand grows
-- **Price Wars**: Aggressive price cutting hurts profitability
-- **Ignoring Quality**: Poor quality leads to customer loss
-- **Cash Flow Neglect**: Running out of cash ends the game quickly
-- **Competitor Blindness**: Always monitor what rivals are doing
-
-## Troubleshooting
-
-### Common Issues
-
-#### Game Won't Start
-```
-Error: ModuleNotFoundError: No module named 'modules'
-```
-**Solution**: Ensure you're running from the project root directory:
-```bash
-cd /path/to/UseCaseSimulator
-python -m modules.ui.console_ui
-```
-
-#### Save Files Not Loading
-```
-Error: Invalid save file format
-```
-**Solution**:
-1. Check if save file is corrupted
-2. Try loading from an auto-save
-3. Start a new game if all saves are corrupted
-
-#### Performance Issues
-**Symptoms**: Game runs slowly, especially with analytics
-**Solutions**:
-1. Close other applications
-2. Reduce chart generation frequency
-3. Use simpler report formats
-4. Consider upgrading Python version
-
-#### Decision Input Errors
-```
-Error: Invalid decision format
-```
-**Solution**: Follow the exact format shown in prompts:
-- Prices: decimal numbers (e.g., 105.50)
-- Budgets: select from numbered options
-- Yes/No: enter 'y' or 'n'
-
-### Getting Help
-
-1. **In-Game Help**: Press 'H' in most menus for context help
-2. **Documentation**: Check the docs/ folder for detailed guides
-3. **Issue Reports**: Report bugs on GitHub with save files
-4. **Community**: Join discussions for strategy tips
-
-### Recovery Options
-
-If you encounter a game-breaking issue:
-
-1. **Quick Save Recovery**: Load from the most recent quick save
-2. **Round Back**: Go back 1-2 rounds using save files
-3. **Scenario Restart**: Start the same scenario over
-4. **New Scenario**: Try a different scenario with similar difficulty
+---
 
 ## Next Steps
 
-Now that you understand the basics:
+### Advanced Features
+- **Scenario Designer**: Create custom simulations
+- **Analytics Dashboard**: Deep performance analysis
+- **Multiplayer Mode**: Compete with other players
+- **Custom Reports**: Export detailed performance data
 
-1. **Start Playing**: Launch the game and try the tutorial scenario
-2. **Experiment**: Try different strategies and see their outcomes
-3. **Learn Analytics**: Use the reporting features to understand performance
-4. **Challenge Yourself**: Progress through increasingly difficult scenarios
-5. **Share Results**: Compare your performance on leaderboards
+### Further Learning
+- **Strategy Guides**: Advanced business tactics
+- **Case Studies**: Real-world business examples
+- **Economic Theory**: Business cycle understanding
+- **Industry Analysis**: Sector-specific strategies
 
-Remember, the key to success is learning from each decision and adapting your strategy based on results. Good luck, and enjoy building your business empire!
+---
+
+## Support and Resources
+
+### Getting Help
+- **In-Game Help**: Press `F1` for context-sensitive help
+- **Analytics Dashboard**: Detailed performance breakdowns
+- **Scenario Guides**: Strategy tips for each scenario type
+
+### Community Resources
+- **Documentation**: Comprehensive user guides
+- **Video Tutorials**: Visual learning experiences
+- **Strategy Forums**: Share experiences with other players
+
+---
+
+**Ready to start your business simulation journey? Click "New Simulation" and begin building your corporate empire!** 🚀📈
