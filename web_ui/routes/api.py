@@ -12,6 +12,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 from modules.core.simulation_engine import SimulationEngine, SimulationConfig
+from modules.core.simulation_state import SimulationState
 from modules.analytics.analytics_manager import AnalyticsManager
 
 api_bp = Blueprint('api', __name__)
@@ -231,11 +232,14 @@ def submit_decision():
         updated_state = SimulationState.from_dict(round_results['game_state'])
         set_game_state(updated_state)
 
-        return jsonify({
+        # Return success response
+        response_data = {
             'success': True,
             'message': f'Round {round_results["round_number"]} completed',
             'data': round_results
-        })
+        }
+
+        return jsonify(response_data)
 
     except Exception as e:
         import traceback

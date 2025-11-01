@@ -107,9 +107,4 @@ def create_app(config_name=None):
 app = create_app()
 
 
-if __name__ == '__main__':
-    # Run the development server
-    print("Starting Use Case Simulator Web UI...")
-    print("Open your browser to: http://localhost:5000")
-    print("Press Ctrl+C to stop the server")
-    app.run(debug=True, host='0.0.0.0', port=5000)
+# Remove the direct app.run() call - use run_web.py instead

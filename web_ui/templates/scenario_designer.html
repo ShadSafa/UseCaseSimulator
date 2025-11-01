@@ -303,8 +303,109 @@ function previewScenario() {
     const scenarioData = collectScenarioData();
     console.log('Scenario Preview:', scenarioData);
 
-    // Show preview modal or redirect to preview page
-    alert('Scenario preview feature coming soon! Check console for scenario data.');
+    // Create preview modal
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    `;
+
+    const modalContent = document.createElement('div');
+    modalContent.style.cssText = `
+        background: var(--glass-backdrop, rgba(0,4,40,0.95));
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0,212,255,0.2);
+        border-radius: 12px;
+        max-width: 800px;
+        width: 100%;
+        max-height: 80vh;
+        overflow-y: auto;
+        padding: 24px;
+        color: #e2e8f0;
+    `;
+
+    modalContent.innerHTML = `
+        <h2 style="color: #00d4ff; margin-top: 0; margin-bottom: 20px;">📋 Scenario Preview</h2>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px;">
+            <div>
+                <h3 style="color: #7c3aed; margin-bottom: 12px;">📊 Basic Info</h3>
+                <p><strong>Name:</strong> ${scenarioData.name}</p>
+                <p><strong>Description:</strong> ${scenarioData.description || 'No description'}</p>
+                <p><strong>Difficulty:</strong> ${scenarioData.difficulty}</p>
+                <p><strong>Max Rounds:</strong> ${scenarioData.max_rounds}</p>
+            </div>
+
+            <div>
+                <h3 style="color: #7c3aed; margin-bottom: 12px;">🏢 Initial Setup</h3>
+                <p><strong>Cash:</strong> $${scenarioData.initial_setup.cash.toLocaleString()}</p>
+                <p><strong>Revenue:</strong> $${scenarioData.initial_setup.revenue.toLocaleString()}</p>
+                <p><strong>Market Share:</strong> ${scenarioData.initial_setup.market_share}%</p>
+                <p><strong>Employees:</strong> ${scenarioData.initial_setup.employees}</p>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 24px;">
+            <h3 style="color: #7c3aed; margin-bottom: 12px;">📈 Market Conditions</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+                <div style="background: rgba(0,84,146,0.1); padding: 12px; border-radius: 6px;">
+                    <strong>Demand:</strong> ${scenarioData.market_conditions.demand_level}
+                </div>
+                <div style="background: rgba(0,84,146,0.1); padding: 12px; border-radius: 6px;">
+                    <strong>Competition:</strong> ${scenarioData.market_conditions.competition_intensity}
+                </div>
+                <div style="background: rgba(0,84,146,0.1); padding: 12px; border-radius: 6px;">
+                    <strong>Economy:</strong> ${scenarioData.market_conditions.economic_conditions}
+                </div>
+                <div style="background: rgba(0,84,146,0.1); padding: 12px; border-radius: 6px;">
+                    <strong>Seasonal:</strong> ${scenarioData.market_conditions.seasonal_effects}
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 24px;">
+            <h3 style="color: #7c3aed; margin-bottom: 12px;">🎯 Constraints</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                ${Object.entries(scenarioData.constraints).map(([key, value]) =>
+                    value ? `<span style="background: rgba(239,68,68,0.2); color: #ef4444; padding: 4px 8px; border-radius: 4px; font-size: 12px;">${key.replace(/_/g, ' ')}</span>` : ''
+                ).join('')}
+            </div>
+        </div>
+
+        <div style="margin-bottom: 24px;">
+            <h3 style="color: #7c3aed; margin-bottom: 12px;">🎓 Learning Objectives</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                ${Object.entries(scenarioData.learning_objectives).map(([key, value]) =>
+                    value ? `<span style="background: rgba(16,185,129,0.2); color: #10b981; padding: 4px 8px; border-radius: 4px; font-size: 12px;">${key.replace(/_/g, ' ')}</span>` : ''
+                ).join('')}
+            </div>
+        </div>
+
+        <div style="text-align: right; border-top: 1px solid rgba(0,212,255,0.2); padding-top: 20px; margin-top: 20px;">
+            <button onclick="this.closest('.modal-overlay').remove()" style="background: #7c3aed; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin-right: 10px;">Close</button>
+            <button onclick="saveScenario(); this.closest('.modal-overlay').remove()" style="background: #00d4ff; color: #000428; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">Save Scenario</button>
+        </div>
+    `;
+
+    modal.appendChild(modalContent);
+    modal.className = 'modal-overlay';
+    document.body.appendChild(modal);
+
+    // Close on background click
+    modal.onclick = (e) => {
+        if (e.target === modal) {
+            modal.remove();
+        }
+    };
 }
 
 function saveScenario() {

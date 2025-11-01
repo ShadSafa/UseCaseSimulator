@@ -33,20 +33,16 @@ def main():
     print("  - Open browser to http://localhost:5000")
     print()
 
-    try:
-        # Start the development server
-        app.run(
-            host='0.0.0.0',
-            port=5000,
-            debug=True,
-            use_reloader=True
-        )
-    except KeyboardInterrupt:
-        print("\n👋 Shutting down Use Case Simulator Web UI...")
-        print("Thank you for playing!")
-    except Exception as e:
-        print(f"\n❌ Error starting web server: {e}")
-        sys.exit(1)
+    # Start the development server
+    import os
+    os.environ['FLASK_ENV'] = 'development'
+    app.run(
+        host='127.0.0.1',
+        port=5000,
+        debug=False,
+        use_reloader=False,
+        threaded=False
+    )
 
 if __name__ == '__main__':
     main()

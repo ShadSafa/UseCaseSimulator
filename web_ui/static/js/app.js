@@ -173,6 +173,11 @@ class UseCaseSimulator {
         const response = await this.api.post('/api/game/new', gameData);
         if (response.success) {
             this.session.setGameState(response.data);
+            // Hide loading spinner after successful game creation
+            this.ui.hideLoading(document.activeElement);
+        } else {
+            // Hide loading spinner even on error
+            this.ui.hideLoading(document.activeElement);
         }
         return response;
     }
@@ -213,11 +218,15 @@ class UseCaseSimulator {
         if (response.success) {
             this.session.updateGameState(response.data);
             this.ui.updateRoundResults(response.data);
+            // Hide loading spinner after successful response
+            this.ui.hideLoading(document.activeElement);
         } else {
             console.error('Decision failed:', response.message);
             if (response.details) {
                 console.error('Error details:', response.details);
             }
+            // Hide loading spinner even on error
+            this.ui.hideLoading(document.activeElement);
         }
         return response;
     }
@@ -339,7 +348,7 @@ class UI {
     showLoading(element) {
         if (element) {
             element.classList.add('loading');
-            element.innerHTML = '<div class="spinner"></div>' + element.innerHTML;
+            // Remove spinner - just show loading state
             this.loadingElements.add(element);
         }
     }
@@ -347,8 +356,7 @@ class UI {
     hideLoading(element) {
         if (element) {
             element.classList.remove('loading');
-            const spinner = element.querySelector('.spinner');
-            if (spinner) spinner.remove();
+            // No spinner to remove
             this.loadingElements.delete(element);
         }
     }
