@@ -12,7 +12,6 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 from modules.core.simulation_engine import SimulationEngine, SimulationConfig
-from modules.core.simulation_state import SimulationState
 from modules.analytics.analytics_manager import AnalyticsManager
 
 api_bp = Blueprint('api', __name__)
@@ -229,8 +228,28 @@ def submit_decision():
         round_results = engine.run_round(final_decisions)
 
         # Update game state
-        updated_state = SimulationState.from_dict(round_results['game_state'])
-        set_game_state(updated_state)
+        try:
+            from modules.core.simulation_state import SimulationState
+            # Ensure the game_state dict has proper market serialization
+            game_state_dict = round_results['game_state'].copy()
+            if 'market' in game_state_dict and isinstance(game_state_dict['market'], dict):
+                # Market is already serialized, keep it as is
+                pass
+            elif hasattr(self.current_state.market, 'to_dict'):
+                # Market needs to be serialized
+                game_state_dict['market'] = self.current_state.market.to_dict()
+            else:
+                # Fallback - use current market state
+                game_state_dict['market'] = self.current_state.market
+
+            updated_state = SimulationState.from_dict(game_state_dict)
+            set_game_state(updated_state)
+        except Exception as e:
+            import traceback
+            error_details = traceback.format_exc()
+            print(f"State update error: {str(e)}")
+            print(f"Traceback: {error_details}")
+            raise Exception(f"Failed to update game state: {e}")
 
         # Return success response
         response_data = {
@@ -249,7 +268,8 @@ def submit_decision():
         return jsonify({
             'success': False,
             'message': f'Error processing decision: {str(e)}',
-            'details': error_details
+            'details': error_details,
+            'error_type': 'decision_processing_error'
         }), 500
 
 

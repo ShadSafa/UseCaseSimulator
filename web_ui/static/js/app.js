@@ -116,8 +116,8 @@ class UseCaseSimulator {
             console.error('Form submission error:', error);
             // Show error for longer so user can read it
             this.ui.showError(error.message || 'An error occurred');
-            // Keep loading spinner visible during error display
-            // Don't hide it automatically - let user see the error
+            // Hide loading state on error
+            this.ui.hideLoading(form);
         }
     }
 
@@ -173,11 +173,6 @@ class UseCaseSimulator {
         const response = await this.api.post('/api/game/new', gameData);
         if (response.success) {
             this.session.setGameState(response.data);
-            // Hide loading spinner after successful game creation
-            this.ui.hideLoading(document.activeElement);
-        } else {
-            // Hide loading spinner even on error
-            this.ui.hideLoading(document.activeElement);
         }
         return response;
     }
@@ -368,7 +363,8 @@ class UI {
     showError(message) {
         // Create a modal dialog for errors that stays visible
         this.showErrorModal(message);
-        this.showFlashMessage(message, 'error');
+        // Don't show flash message for now - focus on modal
+        // this.showFlashMessage(message, 'error');
     }
 
     showErrorModal(message) {
@@ -385,30 +381,35 @@ class UI {
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.9);
             z-index: 10000;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-family: Arial, sans-serif;
         `;
 
         // Create modal content
         const modalContent = document.createElement('div');
         modalContent.style.cssText = `
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 500px;
+            background: #ff4444;
+            border: 3px solid #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 600px;
             width: 90%;
             max-height: 80vh;
             overflow-y: auto;
+            box-shadow: 0 0 20px rgba(255, 68, 68, 0.8);
         `;
 
         modalContent.innerHTML = `
-            <h3 style="color: #d32f2f; margin-top: 0;">Error Occurred</h3>
-            <pre style="white-space: pre-wrap; word-wrap: break-word; font-family: monospace; font-size: 12px; background: #f5f5f5; padding: 10px; border-radius: 4px;">${message}</pre>
-            <div style="text-align: right; margin-top: 15px;">
-                <button id="close-error-modal" style="padding: 8px 16px; background: #d32f2f; color: white; border: none; border-radius: 4px; cursor: pointer;">Close</button>
+            <h3 style="color: #ffffff; margin-top: 0; font-size: 24px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">🚨 ERROR OCCURRED</h3>
+            <div style="background: #ffffff; color: #000000; padding: 15px; border-radius: 8px; margin: 15px 0; border: 2px solid #ff4444; font-family: 'Courier New', monospace; font-size: 14px; white-space: pre-wrap; word-wrap: break-word; max-height: 300px; overflow-y: auto;">
+${message}
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button id="close-error-modal" style="padding: 12px 24px; background: #ffffff; color: #ff4444; border: 2px solid #ff4444; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px;">CLOSE ERROR</button>
             </div>
         `;
 
@@ -426,6 +427,11 @@ class UI {
                 modal.remove();
             }
         };
+
+        // Make sure it's visible
+        modal.style.display = 'flex';
+        modal.style.alignItems = 'center';
+        modal.style.justifyContent = 'center';
     }
 
     showFlashMessage(message, type = 'info') {

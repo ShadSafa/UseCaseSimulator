@@ -112,12 +112,20 @@ class SimulationEngine:
         # Store in history
         self.simulation_history.append(self.current_state.to_dict())
 
+        # Create a clean game state dict for return
+        game_state_dict = self.current_state.to_dict()
+        # Ensure market is properly serialized
+        if isinstance(self.current_state.market, dict):
+            game_state_dict['market'] = self.current_state.market
+        else:
+            game_state_dict['market'] = self.current_state.market.to_dict()
+
         return {
             'round_number': new_round,
             'round_results': round_results,
             'triggered_events': triggered_events,
             'expired_events': expired_events,
-            'game_state': self.current_state.to_dict(),
+            'game_state': game_state_dict,
             'is_simulation_over': self.round_manager.is_simulation_over()
         }
 
